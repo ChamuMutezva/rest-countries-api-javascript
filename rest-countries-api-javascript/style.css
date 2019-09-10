@@ -1,6 +1,33 @@
-i.fa.fa-cloud-moon {
+i.fa.fa-trophy {
     font-size: 48px;
     width: 100px;
     height: 100px;
     background-color: aliceblue;
+}
+div.countries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.allCountries {
+    width: 300px;
+    max-height: 280px;
+    margin-top: 10%;
+}
+body {
+    background: lightgray;
+}
+img {
+    max-width: 245px;
+    min-height: 160px;
+}
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
