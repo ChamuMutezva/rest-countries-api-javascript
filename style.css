@@ -6,75 +6,108 @@
 
 body {
     font-family: "Numito Sans", sans-serif;
-}
-
-header {
-    top: 0;
-    position: fixed;
-    background-color: white;
-    width: 100vw;
-    z-index: 10;
-}
-
-img.moon {
-    height: 5vh;   
-    font-size: small;
-    justify-self: right;    
-    margin: auto 10%; 
-    min-height: 20px;   
-}
-img {
-    max-width: 245px;
-    min-height: 160px;
-}
-
-figure {
-    text-align: right;
-}
-
-div.countries {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.allCountries {
-    width: 300px;
-    max-height: 280px;
-    margin-top: 10%;
-}
-body {
     background: hsl(0, 0%, 52%);
 }
 
-form {
-    width: 100vw;
-   /* position: fixed;*/
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+@media screen and (min-width: 280px) {
+    header {
+        top: 0;
+        position: fixed;
+        background-color: white;
+        width: 100vw;
+        z-index: 10;
+    }
+
+    img.moon {
+        height: 5vh;
+        font-size: small;
+        justify-self: right;
+        /*margin: auto 10%; */
+        min-height: 20px;
+    }
+
+    img {
+        max-width: 245px;
+        min-height: 160px;
+        margin: auto;
+        display: block;
+    }
+
+    p.paraName {
+        text-align: center;
+    }
+
+    figure {
+        text-align: right;
+    }
+
+    div.countries {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .allCountries {
+        width: 300px;
+        max-height: 280px;
+        margin-top: 10%;
+    }
+
+    .allCountries:hover {
+       cursor: pointer; 
+    }
+
+    form {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        position: relative;
+        top: 30vh;
+        z-index: 1;
+        margin-top: 10px;
+    }
+
+    .selectOptions {
+        text-align: right;
+        margin-right: 10%;
+    }
+
+    select.continents {
+       width: 90%;
+       height: 6vh;
+       margin-bottom: 5%;
+    }
+
+    input[type="search"] {
+        width: 80%;
+        height: 7vh;
+        padding-left: 5%;
+        display: block;
+        margin: 5% auto;
+    }
 }
 
-main {
-    position: relative;
-    top: 50px;
-    z-index: 1;
-    margin-top: 10px;
-}
+@media screen and (min-width: 500px) {
+    form {
+        grid-template-columns: 1fr 1fr;
+    }
+   
 
-.selectOptions {
-    text-align: right;
-    margin-right: 10%;    
-}
+    input[type="search"] {
+        width: 80%;
+        height: 6vh;           
+        margin: 0
+    }
+    main {       
+        top: 10vh;       
+    }
 
-select.continents {
-    width: 40%;
-}
-input[type="search"] {
-    margin-left: 5%;
-    width: 50%;
 }
