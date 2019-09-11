@@ -1,4 +1,5 @@
 const countries = document.querySelector(".countries");
+let countrySelect = Array.from(document.querySelectorAll(".allCountries"));
 //let country = document.createElement("div");
 //let para = document.createElement("p");
 //country.classList.add("allCountries");
@@ -35,11 +36,12 @@ const fetchCountry = () => {
 				Capital city: ${element.capital} <br>
 				Population: ${element.population} <br>
 				${element.region} <br>
+				${element.callingCodes} <br>
 				${currency.name}
 				`;
 				img.src = `${element.flag}`;
 
-
+				country.addEventListener("click", fetchOneCountry)
 				//console.log(`${element.name}  ${element.flag}  ${element.population} ${element.capital}`)
 			});
 		})
@@ -47,3 +49,15 @@ const fetchCountry = () => {
 
 };
 fetchCountry();
+const fetchOneCountry = () => {
+	const apiEndpoint = `https://restcountries.eu/rest/v2/callingcode/372`;
+
+	fetch(apiEndpoint)
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+		}).catch(error => console.log(error))
+
+}
+
+

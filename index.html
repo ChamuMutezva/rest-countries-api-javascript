@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+    <!--<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <title>Rest Api Countries</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <h2>Where in the world</h2>
-             <div class="dayMode"><i class="fa fa-trophy"></i></div>
-        </nav>
+      <nav>
+        <h2>Where in the world</h2>
+        <figure>
+          <img class="moon" src="images/moon-solid.svg" />
+        </figure>
+
+      <!--  <div class="dayMode"><i class="fa fa-frog"></i></div>     -->
+      </nav>
     </header>
     <main>
-        <form method="GET">
-            <div>
-                <input type="search" value="search for a country" />
-            </div>
-
-            <div>
-            <select name="" id="">
-                <option value="africa">Africa</option>
-                <option value="america">America</option>
-                 <option value="ocenia">Ocenia</option>
-                <option value="asia">Asia</option>
-                <option value="europe">Europe</option>
-            </select>
-            </div>
-        </form>
-        <div class="countries">
-
+      <form method="GET">
+        <div>
+          <input type="search" value="search for a country" />
         </div>
+
+        <div class="selectOptions" >
+          <select name="" class="continents" onchange="location = this.value;">
+            <option value="">Filter by Region</option>          
+            <option value="country.html">Africa</option>
+            <option value="america">America</option>
+            <option value="ocenia">Ocenia</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+          </select>
+        </div>
+      </form>
+      <div class="countries"></div>
     </main>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

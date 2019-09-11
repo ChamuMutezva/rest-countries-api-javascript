@@ -1,9 +1,37 @@
-i.fa.fa-trophy {
-    font-size: 48px;
-    width: 100px;
-    height: 100px;
-    background-color: aliceblue;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: "Numito Sans", sans-serif;
+}
+
+header {
+    top: 0;
+    position: fixed;
+    background-color: white;
+    width: 100vw;
+    z-index: 10;
+}
+
+img.moon {
+    height: 5vh;   
+    font-size: small;
+    justify-self: right;    
+    margin: auto 10%; 
+    min-height: 20px;   
+}
+img {
+    max-width: 245px;
+    min-height: 160px;
+}
+
+figure {
+    text-align: right;
+}
+
 div.countries {
     display: flex;
     flex-wrap: wrap;
@@ -21,13 +49,32 @@ nav {
     margin-top: 10%;
 }
 body {
-    background: lightgray;
+    background: hsl(0, 0%, 52%);
 }
-img {
-    max-width: 245px;
-    min-height: 160px;
-}
+
 form {
+    width: 100vw;
+   /* position: fixed;*/
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+main {
+    position: relative;
+    top: 50px;
+    z-index: 1;
+    margin-top: 10px;
+}
+
+.selectOptions {
+    text-align: right;
+    margin-right: 10%;    
+}
+
+select.continents {
+    width: 40%;
+}
+input[type="search"] {
+    margin-left: 5%;
+    width: 50%;
 }
