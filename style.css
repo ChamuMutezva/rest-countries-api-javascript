@@ -6,24 +6,29 @@
 
 body {
     font-family: "Numito Sans", sans-serif;
-    background: hsl(0, 0%, 52%);
+    background:  hsl(207, 26%, 17%);
 }
 
 @media screen and (min-width: 280px) {
     header {
         top: 0;
         position: fixed;
-        background-color: white;
         width: 100vw;
         z-index: 10;
+        color: white;
     }
 
-    img.moon {
+    /*img.moon {
         height: 5vh;
         font-size: small;
         justify-self: right;
-        /*margin: auto 10%; */
+        margin: auto 10%;
         min-height: 20px;
+    } */
+    svg.svg-inline--fa.fa-moon.fa-w-16 {
+        height: 17px;
+        width: 5vw;
+        font-size: small;
     }
 
     img {
@@ -35,10 +40,15 @@ body {
 
     p.paraName {
         text-align: center;
+    background-color:  hsl(209, 23%, 22%);
+    width: 81%;
+    margin: auto;
     }
 
     figure {
-        text-align: right;
+        display: grid;
+    grid-template-columns: 1fr 1fr;
+justify-items: end;
     }
 
     div.countries {
@@ -50,6 +60,11 @@ body {
     nav {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        font-size: small;
+        justify-items: center;
+        align-items: center;
+        background-color: hsl(209, 23%, 22%);
+        height: 20vh;
     }
 
     .allCountries {
@@ -59,7 +74,7 @@ body {
     }
 
     .allCountries:hover {
-       cursor: pointer; 
+       cursor: pointer;
     }
 
     form {
@@ -70,44 +85,63 @@ body {
 
     main {
         position: relative;
-        top: 30vh;
+        top: 50vh;
         z-index: 1;
         margin-top: 10px;
+
     }
 
     .selectOptions {
-        text-align: right;
-        margin-right: 10%;
+        text-align: left;
+        margin-left: 10%;
+        width: 80%;
     }
 
     select.continents {
-       width: 90%;
+       width: 60%;
        height: 6vh;
        margin-bottom: 5%;
+       background-color: hsl(209, 23%, 22%);
+       color: white;
     }
 
     input[type="search"] {
-        width: 80%;
+        position: relative;
+        width: 88%;
         height: 7vh;
         padding-left: 5%;
         display: block;
+        border: none;
+        border-radius: 10px;
+        height: 12vh;
         margin: 5% auto;
+        background-color: hsl(209, 23%, 22%);
+        color: white;
     }
+    input[type="search"]::before {
+  position: absolute;
+  font-family: 'FontAwesome';
+  top: 0;
+  left: 10px;
+  content: "\f002";
+}
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 616px) {
     form {
         grid-template-columns: 1fr 1fr;
+        margin: 5% auto;
+        justify-items: center;
     }
-   
+
 
     input[type="search"] {
         width: 80%;
-        height: 6vh;           
+        height: 6vh;
         margin: 0
     }
-    main {       
-        top: 10vh;       
+    main {
+        top: 25vh;
     }
 
 }

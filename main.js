@@ -1,5 +1,8 @@
 const countries = document.querySelector(".countries");
 let countrySelect = Array.from(document.querySelectorAll(".allCountries"));
+const imgCountry = document.querySelector(".flags");
+
+
 //let country = document.createElement("div");
 //let para = document.createElement("p");
 //country.classList.add("allCountries");
@@ -18,8 +21,8 @@ const fetchCountry = () => {
 			console.log(data);
 			data.forEach(element => {
 				//let [name,] = element;
-				
-				const [ currency, ] = element.currencies;
+
+				const [currency,] = element.currencies;
 				//console.log(currency.name);
 				let country = document.createElement("div");
 				let para = document.createElement("p");
@@ -27,11 +30,11 @@ const fetchCountry = () => {
 
 				country.classList.add("allCountries");
 				para.classList.add("paraName");
-                img.classList.add("flags");
+				img.classList.add("flags");
 
-                country.appendChild(img);
+				country.appendChild(img);
 				countries.appendChild(country);
-				country.appendChild(para);				
+				country.appendChild(para);
 				para.innerHTML = `Country: ${element.name} <br>
 				Capital city: ${element.capital} <br>
 				Population: ${element.population} <br>
@@ -41,9 +44,15 @@ const fetchCountry = () => {
 				`;
 				img.src = `${element.flag}`;
 
-				country.addEventListener("click", fetchOneCountry)
+				img.addEventListener("click", function (evt) {
+					console.log(evt.target.parentNode);
+				})
+				//country.addEventListener("click", fetchOneCountry)
+
 				//console.log(`${element.name}  ${element.flag}  ${element.population} ${element.capital}`)
 			});
+
+
 		})
 		.catch(error => console.log("Error :", error));
 
@@ -60,4 +69,10 @@ const fetchOneCountry = () => {
 
 }
 
+
+// _____________------------------
+//imgCountry.addEventListener("click", function(evt){
+//	console.log(evt);
+//	})
+//---------------------___________________
 
