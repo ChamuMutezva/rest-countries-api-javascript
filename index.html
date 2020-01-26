@@ -1,54 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
-    />
-     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
-    <!--<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Rest Api Countries</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <h2>Where in the world</h2>
-        <figure>
-            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon" class="svg-inline--fa fa-moon fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z"></path></svg>
-        <!--  <img class="moon" src="images/moon-solid.svg" /> -->
-          <figcaption>Dark Mode</figcaption>
-        </figure>
+    /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap" rel="stylesheet">
+  <!--<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Rest Api Countries</title>
+</head>
 
-      <!--  <div class="dayMode"><i class="fa fa-frog"></i></div>     -->
-      </nav>
-      <form method="GET">
-        <div>
-          <input type="search" value="search for a country" />
-        </div>
+<body>
+  <header>
+    <nav>
+      <h2>Where in the world</h2>
+      <figure>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon"
+          class="svg-inline--fa fa-moon fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor"
+            d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z">
+          </path>
+        </svg>
+        <figcaption>Dark Mode</figcaption>
+      </figure>
+    </nav>
 
-        <div class="selectOptions" >
-          <select name="" class="continents" onchange="location = this.value;">
-        <opgroup>Filter by Region
-            <option value="country.html">Africa</option>
+  </header>
+  <main>
+    <div class="mainWrapper">
+      <div class="searchAndSelect">
+
+        <input type="search" placeholder="search for a country" />
+
+
+        <select name="" class="continents">
+          <opgroup>Filter by Region
+            <option value="africa">Africa</option>
             <option value="america">America</option>
             <option value="ocenia">Ocenia</option>
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
-            </opgroup>
-          </select>
-        </div>
-      </form>
-    </header>
-    <main>
+          </opgroup>
+        </select>
 
-      <div class="countries"></div>
-    </main>
-    <script src="main.js"></script>
-  </body>
+      </div>
+
+      <div class="countries">
+      </div>
+    </div>
+    <div class="modal">
+      <input type="button" value="back">
+      <div class="countryDetails">
+        <div class="primary">
+        <img src="" alt="">
+        <h3>Country name</h3>
+        <h6>Native name</h6>
+        <h6>Population</h6>
+        <h6>Region</h6>
+        <h6>sub region</h6>
+        <h6>Capital</h6>
+      </div>
+
+      <div class="secondary">
+        <h6>Top level dormain</h6>
+        <h6>Currencies</h6>
+        <h6>Languages</h6>
+      </div>
+      
+        <h6>Border countries</h6>
+      </div>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+
 </html>

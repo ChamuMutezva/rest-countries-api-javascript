@@ -18,13 +18,6 @@ body {
         color: white;
     }
 
-    /*img.moon {
-        height: 5vh;
-        font-size: small;
-        justify-self: right;
-        margin: auto 10%;
-        min-height: 20px;
-    } */
     svg.svg-inline--fa.fa-moon.fa-w-16 {
         height: 17px;
         width: 5vw;
@@ -32,17 +25,25 @@ body {
     }
 
     img {
-        max-width: 245px;
+        max-width: 100%;
         min-height: 160px;
         margin: auto;
         display: block;
     }
 
-    p.paraName {
-        text-align: center;
-    background-color:  hsl(209, 23%, 22%);
-    width: 81%;
-    margin: auto;
+    div .paraName {  
+    padding-left: 8%;
+    color: white;
+    padding-bottom: 5%;
+    }
+    .paraName h2 {
+        margin-top: 5%;
+      /*  margin-left: 5%;
+        color: white; */
+    }
+    h5 {
+        font-weight: 300;
+        margin-top: 5%;
     }
 
     figure {
@@ -55,6 +56,7 @@ justify-items: end;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        padding-bottom: 10%;
     }
 
     nav {
@@ -66,26 +68,28 @@ justify-items: end;
         background-color: hsl(209, 23%, 22%);
         height: 20vh;
     }
+    .searchAndSelect {
+        display: flex;
+        flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+   /* justify-content: center; */
+    }
 
     .allCountries {
         width: 300px;
-        max-height: 280px;
+       /* max-height: 280px;*/
         margin-top: 10%;
+        background-color: hsl(209, 23%, 22%);
     }
 
     .allCountries:hover {
        cursor: pointer;
-    }
-
-    form {
-        width: 100vw;
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+    }  
 
     main {
         position: relative;
-        top: 50vh;
+        top: 20vh;
         z-index: 1;
         margin-top: 10px;
 
@@ -98,22 +102,22 @@ justify-items: end;
     }
 
     select.continents {
-       width: 60%;
+       width: 45%;
        height: 6vh;
-       margin-bottom: 5%;
+       margin: 5%;
        background-color: hsl(209, 23%, 22%);
        color: white;
+       margin: 5% 0 5% 7%;
     }
 
     input[type="search"] {
         position: relative;
         width: 88%;
-        height: 7vh;
+        height: 9vh;
         padding-left: 5%;
         display: block;
         border: none;
-        border-radius: 10px;
-        height: 12vh;
+        border-radius: 4px;     
         margin: 5% auto;
         background-color: hsl(209, 23%, 22%);
         color: white;
@@ -128,15 +132,12 @@ justify-items: end;
 }
 
 @media screen and (min-width: 616px) {
-    form {
-        grid-template-columns: 1fr 1fr;
-        margin: 5% auto;
-        justify-items: center;
+  
+    select.continents {
+        width: 40%;        
     }
-
-
     input[type="search"] {
-        width: 80%;
+        width: 40%;
         height: 6vh;
         margin: 0
     }
