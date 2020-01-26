@@ -88,13 +88,18 @@ const fetchCountry = (event) => {
           <div class="secondary">
 			<h6>Top level dormain: ${element.topLevelDomain}</h6>
 			
-			<h6>Currencies</h6>
+			<h6>Currencies:
 			<span>
 			${element.currencies.map(current => current.code)}
 			</span>	
-            <h6>Languages</h6>
+			</h6>
+			
+			<h6>Languages: 
+			<span>${element.languages.map(language => language.name)}</span>
+			</h6>
           </div>
 		  <h6>Border countries</h6>
+		  <button>${element.borders.map(border =>  border)}</button>
 		  
 		</div> 
 		</div>     
