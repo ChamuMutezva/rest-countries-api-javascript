@@ -1,8 +1,11 @@
 const countries = document.querySelector(".countries");
 let countrySelect = Array.from(document.querySelectorAll(".allCountries"));
-const imgCountry = document.querySelector(".flags");
+const mainWrapper = document.querySelector(".mainWrapper");
+//const imgCountry = Array.from(document.querySelectorAll(".flags"));
 const filterContinent = Array.from(document.querySelectorAll("option"));
+const selectCountry = document.querySelector(".allCountries");
 const modal = document.querySelector(".modal");
+const backBtn = document.getElementById("backBtn");
 //let country = document.createElement("div");
 //let para = document.createElement("p");
 //country.classList.add("allCountries");
@@ -51,21 +54,67 @@ const fetchCountry = (event) => {
 				${element.callingCodes} <br>
 				${currency.name}
 				`;*/
+				
+				let modalWrapper = document.createElement("div");
 				img.src = `${element.flag}`;
 
 				img.addEventListener("click", function (evt) {
-					console.log(evt.currentTarget);
+					console.log(element.name);
+					console.log(mainWrapper);
+					mainWrapper.style.display = "none";
+					modal.style.display = "block";
+					/*while(modalWrapper.firstChild) {
+						console.log(modalWrapper.firstChild);
+						modalWrapper.removeChild(modalWrapper.lastChild); 
+					}*/					
+				
+					console.log(modal.children);
+					modal.appendChild(modalWrapper);
+					modalWrapper.innerHTML = `					
+        
+		<div class="countryDetails">
+		
+		<img src= ${element.flag} alt="">
+		<div class="primarySecondary>
+		<div class="primary">           
+            <h3>${element.name}</h3>
+            <h6>Native name: ${element.nativeName}</h6>
+            <h6>Population: ${element.population}</h6>
+            <h6>Region: ${element.region}</h6>
+            <h6>Sub region: ${element.subregion}</h6>
+            <h6>Capital: ${element.capital}</h6>
+          </div>
+
+          <div class="secondary">
+			<h6>Top level dormain: ${element.topLevelDomain}</h6>
+			
+			<h6>Currencies</h6>
+			<span>
+			${element.currencies.map(current => current.code)}
+			</span>	
+            <h6>Languages</h6>
+          </div>
+		  <h6>Border countries</h6>
+		  
+		</div> 
+		</div>     
+					`
+
+
 				})
-				//country.addEventListener("click", fetchOneCountry)
-
-				//console.log(`${element.name}  ${element.flag}  ${element.population} ${element.capital}`)
 			});
-
-
 		})
 		.catch(error => console.log("Error :", error));
-
 };
+
+backBtn.addEventListener("click", () => {
+	mainWrapper.style.display = "block";
+	if(modal.children.length > 1) {
+		modal.lastElementChild.remove()
+	}	
+	modal.style.display = "none";
+})
+
 fetchCountry();
 
 
@@ -111,9 +160,11 @@ filterContinent.forEach(continent => {
 	})
 })
 
-if (imgCountry) {
+/*if (imgCountry) {
+	console.log(imgCountry);
 	imgCountry.addEventListener("click", (evt) => {
-		console.log(evt);
-	})
-}
+		console.log("image clicked");
+	}) 
+}*/
+console.log(countrySelect);
 console.log(filterContinent);

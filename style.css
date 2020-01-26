@@ -8,6 +8,42 @@ body {
     font-family: "Numito Sans", sans-serif;
     background:  hsl(207, 26%, 17%);
 }
+/* MODAL */
+.modal {
+    position: absolute;
+    width: 100%;
+    height: 100vh;   
+    top: 0;
+    display: none;
+}
+
+.modal img {
+    width: 80%;
+}
+
+input#backBtn {
+    width: 25%;
+    height: 6vh;
+    margin: 5% 0 10% 10%;
+}
+
+.modal h3 {
+    margin: 10% 0 10% 10%;
+}
+.secondary {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.modal h6 {
+    padding-left: 10%;
+    margin-top: 4%;
+}
+
+.countryDetails {
+    color: white;
+    font-weight: 100;
+    /* padding-left: 5%; */
+}
 
 @media screen and (min-width: 280px) {
     header {
