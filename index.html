@@ -45,7 +45,7 @@
           <opgroup>Filter by Region
             <option value="africa">Africa</option>
             <option value="america">America</option>
-            <option value="ocenia">Ocenia</option>
+            <option value="oceania">Oceania</option>
             <option value="asia">Asia</option>
             <option value="europe">Europe</option>
           </opgroup>
@@ -56,11 +56,25 @@
       <div class="countries">
       </div>
     </div>
-    <div class="modal">      
+    <div class="modal">
       <input type="button" id="backBtn" value="back">
     </div>
   </main>
-  <script src="main.js"></script>
+ 
+  <script>   
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => {
+            console.log('Service Worker is registered', registration.scope);
+          })
+          .catch(err => {
+            console.error('Registration failed:', err);
+          });
+      });
+    }
+  </script>
+   <script src="main.js"></script>
 </body>
 
 </html>

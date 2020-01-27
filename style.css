@@ -168,15 +168,23 @@ justify-items: end;
 }
 
 @media screen and (min-width: 616px) {
-  
+    .searchAndSelect {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     select.continents {
-        width: 40%;        
+        width: 22%;  
+        margin: 0 3% 0 0;      
     }
     input[type="search"] {
-        width: 40%;
+        width: 30%;
         height: 6vh;
-        margin: 0
+        margin: 0;
+        margin-left: 4%;
     }
+
+    
     main {
         top: 25vh;
     }
