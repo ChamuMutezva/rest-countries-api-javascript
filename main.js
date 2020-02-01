@@ -35,6 +35,7 @@ const fetchCountry = (event) => {
 				country.classList.add("allCountries");
 				countryDetails.classList.add("paraName");
 				img.classList.add("flags");
+				img.alt = `${element.name}'s flag`;
 
 				country.appendChild(img);
 				countries.appendChild(country);
@@ -54,7 +55,7 @@ const fetchCountry = (event) => {
 				${element.callingCodes} <br>
 				${currency.name}
 				`;*/
-				
+
 				let modalWrapper = document.createElement("div");
 				img.src = `${element.flag}`;
 
@@ -66,8 +67,8 @@ const fetchCountry = (event) => {
 					/*while(modalWrapper.firstChild) {
 						console.log(modalWrapper.firstChild);
 						modalWrapper.removeChild(modalWrapper.lastChild); 
-					}*/					
-				
+					}*/
+
 					console.log(modal.children);
 					modal.appendChild(modalWrapper);
 					modalWrapper.innerHTML = `					
@@ -75,32 +76,35 @@ const fetchCountry = (event) => {
 		<div class="countryDetails">
 		
 		<img src= ${element.flag} alt="">
-		<div class="primarySecondary>
-		<div class="primary">           
-            <h3>${element.name}</h3>
-            <h6>Native name: ${element.nativeName}</h6>
-            <h6>Population: ${element.population}</h6>
-            <h6>Region: ${element.region}</h6>
-            <h6>Sub region: ${element.subregion}</h6>
-            <h6>Capital: ${element.capital}</h6>
-          </div>
+		<div class="primarySecondary">
+			<div class="primary">           
+           		 <h3>${element.name}</h3>
+            	 <h6>Native name: ${element.nativeName}</h6>
+            	 <h6>Population: ${element.population}</h6>
+           		 <h6>Region: ${element.region}</h6>
+            	 <h6>Sub region: ${element.subregion}</h6>
+            	 <h6>Capital: ${element.capital}</h6>
+			  </div>
+			
 
           <div class="secondary">
-			<h6>Top level dormain: ${element.topLevelDomain}</h6>
-			
+			<h6>Top level dormain: ${element.topLevelDomain}</h6>			
 			<h6>Currencies:
 			<span>
 			${element.currencies.map(current => current.code)}
 			</span>	
-			</h6>
-			
+			</h6>			
 			<h6>Languages: 
 			<span>${element.languages.map(language => language.name)}</span>
 			</h6>
-          </div>
+		  </div>
+  
+		  <div class="borderingCity">
 		  <h6>Border countries</h6>
-		  <button>${element.borders.map(border =>  border)}</button>
+	  <div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div> 	   
+	 </div>
 		  
+
 		</div> 
 		</div>     
 					`
@@ -114,9 +118,9 @@ const fetchCountry = (event) => {
 
 backBtn.addEventListener("click", () => {
 	mainWrapper.style.display = "block";
-	if(modal.children.length > 1) {
+	if (modal.children.length > 1) {
 		modal.lastElementChild.remove()
-	}	
+	}
 	modal.style.display = "none";
 })
 

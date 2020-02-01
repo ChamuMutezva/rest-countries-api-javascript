@@ -3,7 +3,16 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="Description" content="Author: C. Mutezva, Topic: Rest Countries api project">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-starturl" content="index.html">
+  <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#9ad5a8">
+  <meta name="msapplication-TileColor" content="#603cba">
+  <meta name="theme-color" content="#ffffff">
   <!-- <link
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       rel="stylesheet"
@@ -42,7 +51,8 @@
 
 
         <select name="" class="continents">
-          <opgroup>Filter by Region
+          <label for="name">Filter by Region</label>
+          <opgroup>
             <option value="africa">Africa</option>
             <option value="america">America</option>
             <option value="oceania">Oceania</option>
@@ -60,8 +70,8 @@
       <input type="button" id="backBtn" value="back">
     </div>
   </main>
- 
-  <script>   
+
+  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('service-worker.js')
@@ -74,7 +84,7 @@
       });
     }
   </script>
-   <script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
