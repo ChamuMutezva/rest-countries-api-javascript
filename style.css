@@ -24,6 +24,7 @@ input:focus, select.continents:focus {
     height: 100vh;
     top: 0;
     display: none;
+    font-size: 16px;
 }
 
 .modal img {
@@ -62,6 +63,7 @@ header {
     width: 100vw;
     z-index: 10;
     color: white;
+    font-size: 14px;
 }
 
 svg.svg-inline--fa.fa-moon.fa-w-16 {
@@ -116,7 +118,9 @@ nav {
     background-color: hsl(209, 23%, 22%);
     height: 20vh;
 }
-
+.mainWrapper {
+    font-size: 14px;
+}
 .searchAndSelect {}
 
 .allCountries {
@@ -190,6 +194,9 @@ input[type="search"]::before {
         flex-direction: row;
         justify-content: space-between;
     }
+    .bordering {        
+        padding-top: 4%;       
+    }
     select.continents {
         width: 22%;
         margin: 0 3% 0 0;
@@ -221,9 +228,11 @@ input[type="search"]::before {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        font-size: 1.5em;
+       /* font-size: 1.5em; */
     }
-
+    .borderingCity {
+        padding-top: 6%;
+    }
 
   
 }

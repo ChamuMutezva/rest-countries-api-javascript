@@ -101,7 +101,9 @@ const fetchCountry = (event) => {
   
 		  <div class="borderingCity">
 		  <h6>Border countries</h6>
-	  <div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div> 	   
+		  <div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div>
+
+
 	 </div>
 		  
 
@@ -115,6 +117,18 @@ const fetchCountry = (event) => {
 		})
 		.catch(error => console.log("Error :", error));
 };
+
+/*
+
+	<div class="bordering>${element.borders.map(border => {
+		if (border == element.alpha3Code) {
+			console.log(element.name);
+		}
+	})} </div>
+
+
+	
+*/
 
 backBtn.addEventListener("click", () => {
 	mainWrapper.style.display = "block";
