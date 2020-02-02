@@ -44,7 +44,7 @@ const fetchCountry = (event) => {
 				
 				<h2> ${element.name}</h2>
 				<h5>Population: ${element.population}  </h5>
-				<h5>Region: ${element.region}</h5>
+				<h5>Region: <span>${element.region}</span></h5>
 				<h5>Capital:  ${element.capital} </h5>
 			  
 				`
@@ -75,12 +75,12 @@ const fetchCountry = (event) => {
         
 		<div class="countryDetails">
 		
-		<img src= ${element.flag} alt="">
+		<img src= ${element.flag} alt="" tabindex=0>
 		<div class="primarySecondary">
 			<div class="primary">           
            		 <h3>${element.name}</h3>
             	 <h6>Native name: ${element.nativeName}</h6>
-            	 <h6>Population: ${element.population}</h6>
+            	 <h6>Population: ${element.population.toLocaleString()}</h6>
            		 <h6>Region: ${element.region}</h6>
             	 <h6>Sub region: ${element.subregion}</h6>
             	 <h6>Capital: ${element.capital}</h6>
@@ -158,16 +158,36 @@ searchCountry.addEventListener("input", (e) => {
 	})
 
 	console.log(e.target.value);
-
 })
 console.log(searchCountry);
 
-filterContinent.forEach(continent => {
+/*filterContinent.forEach(continent => {
 	continent.addEventListener("change", (event) => {
-		console.log(event);
+		console.log(continent.value);
 		console.log(`${continent.innerHTML} has been clicked`);
 	})
-})
+})*/
+
+const continentSelect = document.querySelector("select");
+console.log(continentSelect);
+continentSelect.onchange = (evt) => {
+	const availableCountries = Array.from(document.querySelectorAll(".paraName span"));
+	availableCountries.forEach(country => {
+		const myCountry = country.innerHTML.toLowerCase().trim();	
+		
+		if(myCountry == continentSelect.value || continentSelect.value === "all") {
+			country.parentElement.parentElement.parentElement.style.display = "block";			
+		} else {
+			country.parentElement.parentElement.parentElement.style.display = "none";
+		}
+	})
+	console.log(continentSelect.value);
+	//console.log(evt)
+}
+/* continentSelect.addEventListener("click", (evt) => {
+	console.log(evt.target);
+	console.log(continentSelect.value);
+} ) */
 
 /*if (imgCountry) {
 	console.log(imgCountry);

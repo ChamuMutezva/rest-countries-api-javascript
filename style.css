@@ -11,6 +11,11 @@ body {
     background: hsl(207, 26%, 17%);
 }
 
+input:focus, select.continents:focus {
+	border: 1px solid white;
+	background-color: hsl(205, 20%, 29%);
+}
+
 /* MODAL */
 
 .modal {
