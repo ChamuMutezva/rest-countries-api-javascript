@@ -15,8 +15,14 @@ const backBtn = document.getElementById("backBtn");
 console.log(countries);
 //console.log(country);
 
-//const toggleImg = document.querySelector(figure);
-//console.log(toggleImg);
+const toggleImg = document.querySelector(".toggleState");
+console.log(toggleImg);
+toggleImg.addEventListener("click", ()=> {
+	console.log("toggle image clicked");
+	const body = document.querySelector("body");
+	body.classList.toggle("lightMode");
+	modal.classList.toggle("lightMode");
+})
 
 const fetchCountry = (event) => {
 

@@ -5,14 +5,16 @@
 }
 
 :root {
-    --background-body-dark: hsl(207, 26%, 17%);
+    --background-el: hsl(0, 0%, 100%);
+	--body: hsl(0, 0%, 98%);
+  /*  --background-body-dark: hsl(207, 26%, 17%);
     --background-light-mode: hsl(0, 0%, 98%);
     --background-element-dark: hsl(209, 23%, 22%);
     --text-element-light: hsl(0, 0%, 100%);
     --background-element-light: hsl(0, 0%, 100%);
     --light-mode-text: hsl(200, 15%, 8%);
     --dark-mode-text: hsl(0, 0%, 100%) --light-mode-input: hsl(0, 0%, 52%);
-    --light-mode-elements: hsl(0, 0%, 100%);
+    --light-mode-elements: hsl(0, 0%, 100%); */
 }
 
 html {
@@ -21,17 +23,24 @@ html {
 
 body {
     font-family: "Numito Sans", sans-serif;
-    background-color: var(--background-body-dark);
+    background-color: var(--body);
+    color: hsl(200, 15%, 8%);
     /* background: hsl(207, 26%, 17%);*/
 }
-.lightMode {
-    background-color: var(--background-light-mode);
+body.lightMode {
+    color: hsl(0, 0%, 100%);
+	--body: hsl(207, 26%, 17%);
+	--background-el: hsl(209, 23%, 22%);
+   /* background-color: var(--background-light-mode);
     color: var(--light-mode-text);
+    color: hsl(0, 0%, 100%);*/
+
 }
+/*
 input:focus, select.continents:focus {
     border: 1px solid white;
     background-color: hsl(205, 20%, 29%);
-}
+}*/
 
 /* MODAL */
 
@@ -52,8 +61,7 @@ input#backBtn, .border {
     width: 25%;
     height: 6vh;
     margin: 5% 0 10% 10%;
-    background-color: var(--background-element-dark);
-    color: var(--light-mode-elements);
+    --background-el: hsl(209, 23%, 22%);    
     border: none;
 }
  .border {    
@@ -79,7 +87,7 @@ span.highLight {
 }
 
 .countryDetails {
-    color: white;
+    /*color: white; */
     font-weight: 100;
     /* padding-left: 5%; */
 }
@@ -89,8 +97,12 @@ header {
     position: fixed;
     width: 100vw;
     z-index: 10;
-    color: white;
+   /* color: white;*/
     font-size: 14px;
+    --background-el: hsl(209, 23%, 22%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+
+   /* box-shadow: 1px 19px 5px 13px #f8f7f6;*/
 }
 
 svg.svg-inline--fa.fa-moon.fa-w-16 {
@@ -110,14 +122,14 @@ img {
 
 div .paraName {
     padding-left: 8%;
-    color: white;
+  /*  color: white; */
     padding-bottom: 5%;
 }
 
 .paraName h2 {
     margin-top: 5%;
-    /*  margin-left: 5%;
-        color: white; */
+      margin-left: 5%;
+     /*  color: white; */
 }
 
 h5 {
@@ -160,7 +172,8 @@ nav {
     /* max-height: 280px;*/
     margin-right: 5px;
     margin-top: 3%;
-    background-color: hsl(209, 23%, 22%);
+    --background-el: hsl(209, 23%, 22%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
     border-radius: 10px;
 }
 
@@ -185,8 +198,7 @@ select.continents {
     width: 45%;
     height: 6vh;
     margin: 5%;
-    background-color: hsl(209, 23%, 22%);
-    color: white;
+    --background-el: hsl(209, 23%, 22%);   
     margin: 5% 0 5% 7%;
 }
 
@@ -199,7 +211,7 @@ input[type="search"] {
     border: none;
     border-radius: 4px;
     margin: 5% auto;
-    background-color: hsl(209, 23%, 22%);
+    --background-el: hsl(209, 23%, 22%);   
     color: white;
 }
 
