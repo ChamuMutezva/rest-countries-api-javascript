@@ -15,6 +15,9 @@ const backBtn = document.getElementById("backBtn");
 console.log(countries);
 //console.log(country);
 
+//const toggleImg = document.querySelector(figure);
+//console.log(toggleImg);
+
 const fetchCountry = (event) => {
 
 	const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
@@ -24,10 +27,8 @@ const fetchCountry = (event) => {
 		.then(data => {
 			console.log(data);
 			data.forEach(element => {
-				//let [name,] = element;
-
-				const [currency,] = element.currencies;
-				//console.log(currency.name);
+				
+				const [currency,] = element.currencies;				
 				let country = document.createElement("div");
 				let countryDetails = document.createElement("div");
 				let img = document.createElement("img");
@@ -43,18 +44,11 @@ const fetchCountry = (event) => {
 				countryDetails.innerHTML = `
 				
 				<h2> ${element.name}</h2>
-				<h5>Population: ${element.population}  </h5>
+				<h5>Population: ${element.population.toLocaleString()}  </h5>
 				<h5>Region: <span>${element.region}</span></h5>
 				<h5>Capital:  ${element.capital} </h5>
 			  
-				`
-				/* `Country: <br>
-				Capital city: ${element.capital} <br>
-				Population: ${element.population} <br>
-				${element.region} <br>
-				${element.callingCodes} <br>
-				${currency.name}
-				`;*/
+				`				
 
 				let modalWrapper = document.createElement("div");
 				img.src = `${element.flag}`;
@@ -79,29 +73,30 @@ const fetchCountry = (event) => {
 		<div class="primarySecondary">
 			<div class="primary">           
            		 <h3>${element.name}</h3>
-            	 <h6>Native name: ${element.nativeName}</h6>
-            	 <h6>Population: ${element.population.toLocaleString()}</h6>
-           		 <h6>Region: ${element.region}</h6>
-            	 <h6>Sub region: ${element.subregion}</h6>
-            	 <h6>Capital: ${element.capital}</h6>
+            	 <h6><span class="highLight">Native name:</span> ${element.nativeName}</h6>
+            	 <h6><span class="highLight">Population:</span> ${element.population.toLocaleString()}</h6>
+           		 <h6><span class="highLight">Region:</span> ${element.region}</h6>
+            	 <h6><span class="highLight">Sub region:</span> ${element.subregion}</h6>
+            	 <h6><span class="highLight">Capital:</span> ${element.capital}</h6>
 			  </div>
 			
 
           <div class="secondary">
-			<h6>Top level dormain: ${element.topLevelDomain}</h6>			
-			<h6>Currencies:
+			<h6><span class="highLigh"t>Top level dormain:</span> ${element.topLevelDomain}</h6>			
+			<h6><span class="highLight">Currencies:</span>
 			<span>
 			${element.currencies.map(current => current.code)}
 			</span>	
 			</h6>			
-			<h6>Languages: 
+			<h6><span class="highLight">Languages:</span> 
 			<span>${element.languages.map(language => language.name)}</span>
 			</h6>
 		  </div>
   
 		  <div class="borderingCity">
-		  <h6>Border countries</h6>
-		  <div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div>
+		  <h6><span class="highLight">Border countries:</span></h6>
+		  <div class="bordering">${element.borders.map(border => ` <button class="border"> ${border}</button> `).join("")}</div>
+	
 
 
 	 </div>
@@ -119,6 +114,7 @@ const fetchCountry = (event) => {
 };
 
 /*
+<div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div>
 
 	<div class="bordering>${element.borders.map(border => {
 		if (border == element.alpha3Code) {

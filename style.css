@@ -4,16 +4,33 @@
     box-sizing: border-box;
 }
 
-html{overflow-x: hidden;}
+:root {
+    --background-body-dark: hsl(207, 26%, 17%);
+    --background-light-mode: hsl(0, 0%, 98%);
+    --background-element-dark: hsl(209, 23%, 22%);
+    --text-element-light: hsl(0, 0%, 100%);
+    --background-element-light: hsl(0, 0%, 100%);
+    --light-mode-text: hsl(200, 15%, 8%);
+    --dark-mode-text: hsl(0, 0%, 100%) --light-mode-input: hsl(0, 0%, 52%);
+    --light-mode-elements: hsl(0, 0%, 100%);
+}
+
+html {
+    overflow-x: hidden;
+}
 
 body {
     font-family: "Numito Sans", sans-serif;
-    background: hsl(207, 26%, 17%);
+    background-color: var(--background-body-dark);
+    /* background: hsl(207, 26%, 17%);*/
 }
-
+.lightMode {
+    background-color: var(--background-light-mode);
+    color: var(--light-mode-text);
+}
 input:focus, select.continents:focus {
-	border: 1px solid white;
-	background-color: hsl(205, 20%, 29%);
+    border: 1px solid white;
+    background-color: hsl(205, 20%, 29%);
 }
 
 /* MODAL */
@@ -31,10 +48,16 @@ input:focus, select.continents:focus {
     width: 80%;
 }
 
-input#backBtn {
+input#backBtn, .border {
     width: 25%;
     height: 6vh;
     margin: 5% 0 10% 10%;
+    background-color: var(--background-element-dark);
+    color: var(--light-mode-elements);
+    border: none;
+}
+ .border {    
+    margin: 0% 0 1% 1%;   
 }
 
 .modal h3 {
@@ -49,6 +72,10 @@ input#backBtn {
 .modal h6 {
     padding-left: 10%;
     margin-top: 4%;
+    font-weight: 100;
+}
+span.highLight {
+    font-weight: 900;
 }
 
 .countryDetails {
@@ -77,6 +104,8 @@ img {
     min-height: 160px;
     margin: auto;
     display: block;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 div .paraName {
@@ -115,12 +144,15 @@ nav {
     font-size: small;
     justify-items: center;
     align-items: center;
-    background-color: hsl(209, 23%, 22%);
+    background-color: var(--background-element-dark);
+    /* background-color: hsl(209, 23%, 22%); */
     height: 20vh;
 }
+
 .mainWrapper {
     font-size: 14px;
 }
+
 .searchAndSelect {}
 
 .allCountries {
@@ -129,6 +161,7 @@ nav {
     margin-right: 5px;
     margin-top: 3%;
     background-color: hsl(209, 23%, 22%);
+    border-radius: 10px;
 }
 
 .allCountries:hover {
@@ -194,8 +227,8 @@ input[type="search"]::before {
         flex-direction: row;
         justify-content: space-between;
     }
-    .bordering {        
-        padding-top: 4%;       
+    .bordering {
+        padding-top: 4%;
     }
     select.continents {
         width: 22%;
@@ -207,6 +240,7 @@ input[type="search"]::before {
         margin: 0;
         margin-left: 4%;
     }
+   
     main {
         top: 25vh;
     }
@@ -216,9 +250,8 @@ input[type="search"]::before {
     }
     .modal img {
         width: 35%;
-    margin: auto 5%;
+        margin: auto 5%;
     }
-   
     input#backBtn {
         width: 15%;
         height: 6vh;
@@ -228,11 +261,15 @@ input[type="search"]::before {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
-       /* font-size: 1.5em; */
+        /* font-size: 1.5em; */
     }
     .borderingCity {
         padding-top: 6%;
     }
+}
 
-  
+@media screen and (min-width: 1100px) {
+    select.continents {
+        width: 15%;       
+    }
 }
