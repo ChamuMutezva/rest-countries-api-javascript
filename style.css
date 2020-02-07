@@ -259,7 +259,7 @@ input[type="search"]::before {
     }
    
     main {
-        top: 25vh;
+        top: 6vh;
     }
     /* modal */
     .modal .countryDetails {
