@@ -60,8 +60,8 @@ input:focus, select.continents:focus {
 input#backBtn, .border {
     width: 25%;
     height: 6vh;
-    margin: 5% 0 10% 10%;
-    --background-el: hsl(209, 23%, 22%);    
+    margin: 5% 0 10% 10%;   
+   --background-el: hsl(209, 23%, 22%);   
     border: none;
 }
  .border {    
@@ -156,8 +156,8 @@ nav {
     font-size: small;
     justify-items: center;
     align-items: center;
-    background-color: var(--background-element-dark);
-    /* background-color: hsl(209, 23%, 22%); */
+    /* background-color: var(--background-element-dark);
+    background-color: hsl(209, 23%, 22%); */
     height: 20vh;
 }
 
@@ -171,9 +171,12 @@ nav {
     width: 300px;
     /* max-height: 280px;*/
     margin-right: 5px;
-    margin-top: 3%;
+    margin-top: 3%;   
+    box-shadow: 0 1px 6px 20px rgba(0, 0, 0, 0.06), 0 1px 2px 4px rgba(0, 0, 0, 0.12);
+   /*
     --background-el: hsl(209, 23%, 22%);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+    background-color: var(--background-el);
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);*/
     border-radius: 10px;
 }
 
@@ -198,7 +201,8 @@ select.continents {
     width: 45%;
     height: 6vh;
     margin: 5%;
-    --background-el: hsl(209, 23%, 22%);   
+  /*  --background-el: hsl(209, 23%, 22%);   */
+  background-color: var(--background-el);
     margin: 5% 0 5% 7%;
 }
 
@@ -211,7 +215,8 @@ input[type="search"] {
     border: none;
     border-radius: 4px;
     margin: 5% auto;
-    --background-el: hsl(209, 23%, 22%);   
+    background-color: var(--background-el);
+    /*--background-el: hsl(209, 23%, 22%);  */ 
     color: white;
 }
 

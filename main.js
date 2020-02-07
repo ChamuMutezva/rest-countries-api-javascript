@@ -18,10 +18,13 @@ console.log(countries);
 const toggleImg = document.querySelector(".toggleState");
 console.log(toggleImg);
 toggleImg.addEventListener("click", ()=> {
+	const continents = document.querySelector(".continents");
 	console.log("toggle image clicked");
 	const body = document.querySelector("body");
 	body.classList.toggle("lightMode");
 	modal.classList.toggle("lightMode");
+	continents.classList.toggle("lightMode");
+	
 })
 
 const fetchCountry = (event) => {
