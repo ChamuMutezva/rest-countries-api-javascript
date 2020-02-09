@@ -6,6 +6,8 @@ const filterContinent = Array.from(document.querySelectorAll("option"));
 const selectCountry = document.querySelector(".allCountries");
 const modal = document.querySelector(".modal");
 const backBtn = document.getElementById("backBtn");
+const continents = document.querySelector(".continents");
+const searchCountry = document.querySelector("input[type='search']");
 //let country = document.createElement("div");
 //let para = document.createElement("p");
 //country.classList.add("allCountries");
@@ -18,12 +20,13 @@ console.log(countries);
 const toggleImg = document.querySelector(".toggleState");
 console.log(toggleImg);
 toggleImg.addEventListener("click", () => {
-	const continents = document.querySelector(".continents");
+	
 	console.log("toggle image clicked");
 	const body = document.querySelector("body");
 	body.classList.toggle("lightMode");
 	modal.classList.toggle("lightMode");
 	continents.classList.toggle("lightMode");
+	searchCountry.classList.toggle("lightMode");
 
 })
 
@@ -189,7 +192,7 @@ fetchCountry();
 //	console.log(evt);
 //	})
 //---------------------___________________
-const searchCountry = document.querySelector("input[type='search']");
+
 searchCountry.addEventListener("input", (e) => {
 	const resultCountry = e.target.value;
 	const availableCountries = Array.from(document.querySelectorAll(".paraName h2"));

@@ -65,7 +65,9 @@ input#backBtn, .border {
     border: none;
 }
  .border {    
-    margin: 0% 0 1% 1%;   
+    margin: 0% 0 1% 1%; 
+    width: 31%;
+    height: 7vh;  
 }
 
 .modal h3 {
@@ -178,6 +180,7 @@ nav {
     background-color: var(--background-el);
    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);*/
     border-radius: 10px;
+    margin-bottom: 3%;
 }
 
 .allCountries:hover {
@@ -200,10 +203,17 @@ main {
 select.continents {
     width: 45%;
     height: 6vh;
-    margin: 5%;
-  /*  --background-el: hsl(209, 23%, 22%);   */
+    margin: 5%;  
   background-color: var(--background-el);
     margin: 5% 0 5% 7%;
+    
+}
+
+select.continents.lightMode {
+color: hsl(0, 0%, 100%);
+}
+input[type="search"].lightMode {
+    color: hsl(0, 0%, 100%);
 }
 
 input[type="search"] {
@@ -217,7 +227,7 @@ input[type="search"] {
     margin: 5% auto;
     background-color: var(--background-el);
     /*--background-el: hsl(209, 23%, 22%);  */ 
-    color: white;
+    color: hsl(200, 15%, 8%);
 }
 
 input[type="search"]::before {
@@ -245,7 +255,7 @@ input[type="search"]::before {
         justify-content: space-between;
     }
     .bordering {
-        padding-top: 4%;
+        padding-top: 4%;      
     }
     select.continents {
         width: 22%;
@@ -282,6 +292,7 @@ input[type="search"]::before {
     }
     .borderingCity {
         padding-top: 6%;
+        grid-column: 1/3;
     }
 }
 
