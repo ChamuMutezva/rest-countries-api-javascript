@@ -17,17 +17,20 @@ console.log(countries);
 
 const toggleImg = document.querySelector(".toggleState");
 console.log(toggleImg);
-toggleImg.addEventListener("click", ()=> {
+toggleImg.addEventListener("click", () => {
 	const continents = document.querySelector(".continents");
 	console.log("toggle image clicked");
 	const body = document.querySelector("body");
 	body.classList.toggle("lightMode");
 	modal.classList.toggle("lightMode");
 	continents.classList.toggle("lightMode");
-	
+
 })
 
 const fetchCountry = (event) => {
+	let codeArray = [];
+	let countryArray = [];
+	let borderArray = [];
 
 	const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
 
@@ -36,11 +39,16 @@ const fetchCountry = (event) => {
 		.then(data => {
 			console.log(data);
 			data.forEach(element => {
-				
-				const [currency,] = element.currencies;				
+
+				const [currency,] = element.currencies;
 				let country = document.createElement("div");
 				let countryDetails = document.createElement("div");
 				let img = document.createElement("img");
+
+				//create an array to hold all alpha3Code
+				codeArray.push(element.alpha3Code);
+				//create an array to hold all countries
+				countryArray.push(element.name);
 
 				country.classList.add("allCountries");
 				countryDetails.classList.add("paraName");
@@ -57,7 +65,7 @@ const fetchCountry = (event) => {
 				<h5>Region: <span>${element.region}</span></h5>
 				<h5>Capital:  ${element.capital} </h5>
 			  
-				`				
+				`
 
 				let modalWrapper = document.createElement("div");
 				img.src = `${element.flag}`;
@@ -71,7 +79,19 @@ const fetchCountry = (event) => {
 						console.log(modalWrapper.firstChild);
 						modalWrapper.removeChild(modalWrapper.lastChild); 
 					}*/
-
+					console.log(codeArray);
+					borderArray = [];
+					element.borders.map(country => {
+						
+						codeArray.forEach((elm, index) => {
+							
+							if (country == elm) {
+								borderArray.push(countryArray[index]);
+								console.log(countryArray[index]);
+							}
+						})
+					} );
+					console.log(borderArray);
 					console.log(modal.children);
 					modal.appendChild(modalWrapper);
 					modalWrapper.innerHTML = `					
@@ -104,8 +124,10 @@ const fetchCountry = (event) => {
   
 		  <div class="borderingCity">
 		  <h6><span class="highLight">Border countries:</span></h6>
-		  <div class="bordering">${element.borders.map(border => ` <button class="border"> ${border}</button> `).join("")}</div>
+		  <div class="bordering">${borderArray.map(border => ` <button class="border"> ${border}</button> `).join("")}</div>
 	
+
+
 
 
 	 </div>
@@ -118,11 +140,15 @@ const fetchCountry = (event) => {
 
 				})
 			});
+			
 		})
 		.catch(error => console.log("Error :", error));
 };
 
 /*
+` <button class="border"> ${border}</button> `
+<div class="bordering">${element.borders.map(border => ` <button class="border"> ${border}</button> `).join("")}</div>
+	
 <div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div>
 
 	<div class="bordering>${element.borders.map(border => {
@@ -192,10 +218,10 @@ console.log(continentSelect);
 continentSelect.onchange = (evt) => {
 	const availableCountries = Array.from(document.querySelectorAll(".paraName span"));
 	availableCountries.forEach(country => {
-		const myCountry = country.innerHTML.toLowerCase().trim();	
-		
-		if(myCountry == continentSelect.value || continentSelect.value === "all") {
-			country.parentElement.parentElement.parentElement.style.display = "block";			
+		const myCountry = country.innerHTML.toLowerCase().trim();
+
+		if (myCountry == continentSelect.value || continentSelect.value === "all") {
+			country.parentElement.parentElement.parentElement.style.display = "block";
 		} else {
 			country.parentElement.parentElement.parentElement.style.display = "none";
 		}
