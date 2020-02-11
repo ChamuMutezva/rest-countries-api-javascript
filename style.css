@@ -111,6 +111,7 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
     height: 17px;
     width: 5vw;
     font-size: small;
+    transform: rotate(-35deg);
 }
 
 img {
@@ -142,7 +143,7 @@ h5 {
 figure {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: end;
+    justify-items: center;
 }
 
 div.countries {
@@ -230,12 +231,12 @@ input[type="search"] {
     color: hsl(200, 15%, 8%);
 }
 
-input[type="search"]::before {
+input[type="search"]:before {
     position: absolute;
     font-family: 'FontAwesome';
     top: 0;
     left: 10px;
-    content: "\f002";
+    content: "\f005";
 }
 
 .bordering {
@@ -293,6 +294,10 @@ input[type="search"]::before {
     .borderingCity {
         padding-top: 6%;
         grid-column: 1/3;
+    }
+
+    figure {        
+        justify-items: end;
     }
 }
 
