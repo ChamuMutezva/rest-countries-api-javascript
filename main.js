@@ -148,21 +148,6 @@ const fetchCountry = (event) => {
 		.catch(error => console.log("Error :", error));
 };
 
-/*
-` <button class="border"> ${border}</button> `
-<div class="bordering">${element.borders.map(border => ` <button class="border"> ${border}</button> `).join("")}</div>
-	
-<div class="bordering">${element.borders.map(border => ` <button> ${border}</button> `).join("")}</div>
-
-	<div class="bordering>${element.borders.map(border => {
-		if (border == element.alpha3Code) {
-			console.log(element.name);
-		}
-	})} </div>
-
-
-	
-*/
 
 backBtn.addEventListener("click", () => {
 	mainWrapper.style.display = "block";
@@ -174,24 +159,6 @@ backBtn.addEventListener("click", () => {
 
 fetchCountry();
 
-
-/* const fetchOneCountry = () => {
-	const apiEndpoint = `https://restcountries.eu/rest/v2/callingcode/372`;
-
-	fetch(apiEndpoint)
-		.then(response => response.json())
-		.then(data => {
-			console.log(data);
-		}).catch(error => console.log(error))
-
-} */
-
-
-// _____________------------------
-//imgCountry.addEventListener("click", function(evt){
-//	console.log(evt);
-//	})
-//---------------------___________________
 
 searchCountry.addEventListener("input", (e) => {
 	const resultCountry = e.target.value;
@@ -209,13 +176,6 @@ searchCountry.addEventListener("input", (e) => {
 })
 console.log(searchCountry);
 
-/*filterContinent.forEach(continent => {
-	continent.addEventListener("change", (event) => {
-		console.log(continent.value);
-		console.log(`${continent.innerHTML} has been clicked`);
-	})
-})*/
-
 const continentSelect = document.querySelector("select");
 console.log(continentSelect);
 continentSelect.onchange = (evt) => {
@@ -232,16 +192,6 @@ continentSelect.onchange = (evt) => {
 	console.log(continentSelect.value);
 	//console.log(evt)
 }
-/* continentSelect.addEventListener("click", (evt) => {
-	console.log(evt.target);
-	console.log(continentSelect.value);
-} ) */
 
-/*if (imgCountry) {
-	console.log(imgCountry);
-	imgCountry.addEventListener("click", (evt) => {
-		console.log("image clicked");
-	}) 
-}*/
 console.log(countrySelect);
 console.log(filterContinent);
