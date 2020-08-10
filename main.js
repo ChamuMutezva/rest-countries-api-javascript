@@ -159,7 +159,7 @@ continentSelect.onchange = (evt) => {
 // const modalTemplate = (element) =>  {}
 
 const modalTemplate = (element) => {
-
+console.log(element)
 	modalWrapper.innerHTML = `					
         
 		<div class="countryDetails">		
@@ -207,7 +207,15 @@ const modalTemplate = (element) => {
 
 					console.log(borderingCountries)
 					borderingCountries.addEventListener("click", (evt) => {
-						console.log(evt.target)
+						const apiEndpoint = `https://restcountries.eu/rest/v2/name/${event.target.innerHTML.trim()}`
+						console.log(evt.target.innerHTML)
+						console.log(apiEndpoint)
+						fetch(apiEndpoint)
+						.then(response => response.json())
+						.then(data => {
+							console.log(data[0])
+							modalTemplate(data[0])							
+						})
 					})
 
 					// ________________
