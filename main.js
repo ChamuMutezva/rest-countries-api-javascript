@@ -206,6 +206,9 @@ console.log(element)
 
 
 					console.log(borderingCountries)
+					//add an eventListener to bordering countries
+					// when the btn of bordering country is clicked 
+					// respective country should be displayed.
 					borderingCountries.addEventListener("click", (evt) => {
 						const apiEndpoint = `https://restcountries.eu/rest/v2/name/${event.target.innerHTML.trim()}`
 						console.log(evt.target.innerHTML)
@@ -214,6 +217,8 @@ console.log(element)
 						.then(response => response.json())
 						.then(data => {
 							console.log(data[0])
+							//call the modalTemplate and fetched data for a particular
+							//country be applied.
 							modalTemplate(data[0])							
 						})
 					})
