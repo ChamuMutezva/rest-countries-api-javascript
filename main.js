@@ -10,6 +10,8 @@ const continents = document.querySelector(".continents");
 const searchCountry = document.querySelector("input[type='search']");
 
 let modalWrapper = document.createElement("div");
+let codeArray = []; //an array to hold all the alpha3Code for all countries
+let countryArray = []; // an array to hold the names of the countries
 let borderArray = []; // an array to hold countries bordering a country
 //let country = document.createElement("div");
 //let para = document.createElement("p");
@@ -32,9 +34,6 @@ toggleImg.addEventListener("click", () => {
 })
 
 const fetchCountry = (event) => {
-	let codeArray = []; //an array to hold all the alpha3Code for all countries
-	let countryArray = []; // an array to hold the names of the countries
-	
 
 	const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
 
@@ -99,7 +98,7 @@ const fetchCountry = (event) => {
 					//console.log(modal.children);
 					modal.appendChild(modalWrapper);
 					modalTemplate(element)
-					
+
 
 				})
 				//modal.removeChild(modalWrapper)
@@ -159,7 +158,7 @@ continentSelect.onchange = (evt) => {
 // const modalTemplate = (element) =>  {}
 
 const modalTemplate = (element) => {
-console.log(element)
+	console.log(element)
 	modalWrapper.innerHTML = `					
         
 		<div class="countryDetails">		
@@ -201,29 +200,42 @@ console.log(element)
 	</div>     
 					`
 
-					// __________________________
-					const borderingCountries = document.querySelector(".bordering");
+	// __________________________
+	const borderingCountries = document.querySelector(".bordering");
 
 
-					console.log(borderingCountries)
-					//add an eventListener to bordering countries
-					// when the btn of bordering country is clicked 
-					// respective country should be displayed.
-					borderingCountries.addEventListener("click", (evt) => {
-						const apiEndpoint = `https://restcountries.eu/rest/v2/name/${event.target.innerHTML.trim()}`
-						console.log(evt.target.innerHTML)
-						console.log(apiEndpoint)
-						fetch(apiEndpoint)
-						.then(response => response.json())
-						.then(data => {
-							console.log(data[0])
-							//call the modalTemplate and fetched data for a particular
-							//country be applied.
-							modalTemplate(data[0])							
+	console.log(borderingCountries)
+	//add an eventListener to bordering countries
+	// when the btn of bordering country is clicked 
+	// respective country should be displayed.
+	borderingCountries.addEventListener("click", (evt) => {
+		const apiEndpoint = `https://restcountries.eu/rest/v2/name/${event.target.innerHTML.trim()}`
+		console.log(evt.target.innerHTML)
+		console.log(apiEndpoint)
+		fetch(apiEndpoint)
+			.then(response => response.json())
+			.then(data => {
+				console.log(data[0])
+				//call the modalTemplate and fetched data for a particular
+				//country be applied.
+					borderArray = [];
+					data[0].borders.map(country => {
+						console.log(country)
+						codeArray.forEach((elm, index) => {
+	
+							if (country == elm) {
+								borderArray.push(countryArray[index]);
+								console.log(countryArray[index]);
+							}
 						})
-					})
+					});
+				//****************** */
+				console.log(data[0].borders)
+				modalTemplate(data[0])
+			})
+	})
 
-					// ________________
+	// ________________
 
 
 }
