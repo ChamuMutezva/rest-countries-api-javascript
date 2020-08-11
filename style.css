@@ -25,6 +25,7 @@ body {
     font-family: "Numito Sans", sans-serif;
     background-color: var(--body);
     color: hsl(200, 15%, 8%);
+    font-size: 14px;
     /* background: hsl(207, 26%, 17%);*/
 }
 body.lightMode {
@@ -35,6 +36,19 @@ body.lightMode {
     color: var(--light-mode-text);
     color: hsl(0, 0%, 100%);*/
 
+}
+h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+figcaption {
+    font-weight: 600;  
+}
+
+path {
+    fill: white;
+    stroke: black;
+    stroke-width: 30px;
 }
 /*
 input:focus, select.continents:focus {
@@ -131,8 +145,8 @@ div .paraName {
 
 .paraName h2 {
     margin-top: 5%;
-      margin-left: 5%;
-     /*  color: white; */
+     /* margin-left: 5%;
+       color: white; */
 }
 
 h5 {
@@ -202,12 +216,11 @@ main {
 }
 
 select.continents {
-    width: 45%;
-    height: 6vh;
-    margin: 5%;  
+    width: 45%;   
   background-color: var(--background-el);
     margin: 5% 0 5% 7%;
-    
+    padding: 15px;
+    border-radius: 5px;    
 }
 
 select.continents.lightMode {
