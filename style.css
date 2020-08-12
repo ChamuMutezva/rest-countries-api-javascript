@@ -181,9 +181,10 @@ nav {
     font-size: small;
     justify-items: center;
     align-items: center;
+    padding: 25px;
     /* background-color: var(--background-element-dark);
     background-color: hsl(209, 23%, 22%); */
-    height: 20vh;
+  
 }
 
 .mainWrapper {
