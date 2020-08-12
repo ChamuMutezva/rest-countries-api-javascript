@@ -324,14 +324,12 @@ input[type="search"]:before {
 @media screen and (min-width: 1100px) {
     h1 {
         justify-self: flex-start;
-        margin-left: 100px;
-        margin-bottom: 70px;
+        margin-left: 100px;     
         font-size: 1.7rem;
     }
     figure.toggleState {
         justify-self: flex-end;
-        margin-right: 70px;
-        margin-bottom: 70px;
+        margin-right: 70px;       
         gap: 0;
     }
     main {
