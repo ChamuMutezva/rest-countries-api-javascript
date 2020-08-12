@@ -25,12 +25,26 @@ let borderArray = []; // an array to hold countries bordering a country
 const toggleImg = document.querySelector(".toggleState"); //Light and dark mode controll
 console.log(toggleImg);
 toggleImg.addEventListener("click", () => {
+	const btns = Array.from(document.querySelectorAll(".btn"));
+	const header = document.querySelector("header")
+	const nav = document.querySelector("nav");
+	nav.classList.toggle("darkMode")
+	header.classList.toggle("darkHeader")
+	console.log(btns);
 	console.log("toggle image clicked");
 	const body = document.querySelector("body");
-	body.classList.toggle("lightMode");
-	modal.classList.toggle("lightMode");
-	continents.classList.toggle("lightMode");
-	searchCountry.classList.toggle("lightMode");
+	body.classList.toggle("darkMode");
+	modal.classList.toggle("darkMode");
+	continents.classList.toggle("darkMode");
+	searchCountry.classList.toggle("darkMode");
+	btns[0].classList.toggle("darkButton");
+	btns.map(btn => {
+		if(btns[0].classList.contains("darkButton")) {
+			btn.classList.add("darkButton");
+		} else {
+			btn.classList.remove("darkButton");
+		}
+	} );
 })
 
 const fetchCountry = (event) => {
@@ -192,7 +206,7 @@ const modalTemplate = (element) => {
 		 		 <div class="borderingCity">
 		  			<h6><span class="highLight">Border countries:</span></h6>
 		  			<div class="bordering">${borderArray.map(border => `
-		  	 			<button class="border"> ${border}</button> `).join("")}
+		  	 			<button class="border btn"> ${border}</button> `).join("")}
 		   			</div>
 				 </div>		  
 

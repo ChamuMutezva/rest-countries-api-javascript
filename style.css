@@ -28,18 +28,24 @@ body {
     font-size: 14px;
     /* background: hsl(207, 26%, 17%);*/
 }
-body.lightMode {
+.darkHeader {
+    color:hsl(0, 0%, 100%) ;
+    background-color:hsl(209, 23%, 22%);
+}
+.darkButton {
+    color:hsl(0, 0%, 100%) ;
+    background-color:hsl(209, 23%, 22%);
+}
+body.darkMode {
     color: hsl(0, 0%, 100%);
 	--body: hsl(207, 26%, 17%);
-	--background-el: hsl(209, 23%, 22%);
-   /* background-color: var(--background-light-mode);
-    color: var(--light-mode-text);
-    color: hsl(0, 0%, 100%);*/
+	--background-el: hsl(209, 23%, 22%);  
 
 }
 h1 {
     font-size: 1.2rem;
     font-weight: 600;
+  
 }
 figcaption {
     font-weight: 600;  
@@ -71,17 +77,19 @@ input:focus, select.continents:focus {
     width: 80%;
 }
 
-input#backBtn, .border {
-    width: 25%;
-    height: 6vh;
-    margin: 5% 0 10% 10%;   
-   --background-el: hsl(209, 23%, 22%);   
+input#backBtn {
+    width: 100px;  
+    margin: 5% 0 10% 10%; 
+}
+
+input#backBtn, .border {      
+   --background-el: hsl(209, 23%, 22%);  
+   padding: 10px; 
     border: none;
 }
  .border {    
-    margin: 0% 0 1% 1%; 
-    width: 31%;
-    height: 7vh;  
+    margin: 5px auto; 
+    width: 31%;    
 }
 
 .modal h3 {
@@ -113,9 +121,9 @@ header {
     /*position: fixed;*/
     width: 100vw;
     z-index: 10;
-   /* color: white;*/
+    color: black;
     font-size: 14px;
-    --background-el: hsl(209, 23%, 22%);
+   /* --background-el: hsl(209, 23%, 22%); */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
 
    /* box-shadow: 1px 19px 5px 13px #f8f7f6;*/
@@ -223,10 +231,10 @@ select.continents {
     border-radius: 5px;    
 }
 
-select.continents.lightMode {
+select.continents.darkMode {
 color: hsl(0, 0%, 100%);
 }
-input[type="search"].lightMode {
+input[type="search"].darkMode {
     color: hsl(0, 0%, 100%);
 }
 
@@ -253,9 +261,7 @@ input[type="search"]:before {
 }
 
 .bordering {
-    padding-left: 10%;
-    padding-top: 10%;
-    padding-bottom: 10%;
+   padding: 20px 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -315,6 +321,24 @@ input[type="search"]:before {
 }
 
 @media screen and (min-width: 1100px) {
+    h1 {
+        justify-self: flex-start;
+        margin-left: 100px;
+        margin-bottom: 70px;
+        font-size: 1.7rem;
+    }
+    figure.toggleState {
+        justify-self: flex-end;
+        margin-right: 70px;
+        margin-bottom: 70px;
+        gap: 0;
+    }
+    main {
+        
+        width: 95%;
+        margin: auto;
+    }
+        
     select.continents {
         width: 15%;       
     }
