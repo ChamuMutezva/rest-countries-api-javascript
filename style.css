@@ -239,11 +239,22 @@ input[type="search"].darkMode {
     color: hsl(0, 0%, 100%);
 }
 
+label.searchCountry {
+    position: relative;    
+}
+
+.fa-search {
+    position: absolute;
+    top: 20px;
+    left: 37px;
+    color: hsl(0, 0%, 52%);
+}
+
 input[type="search"] {
     position: relative;
     width: 88%;
     height: 9vh;
-    padding-left: 5%;
+    padding-left: 15%;
     display: block;
     border: none;
     border-radius: 4px;
