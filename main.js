@@ -13,14 +13,7 @@ let modalWrapper = document.createElement("div");
 let codeArray = []; //an array to hold all the alpha3Code for all countries
 let countryArray = []; // an array to hold the names of the countries
 let borderArray = []; // an array to hold countries bordering a country
-//let country = document.createElement("div");
-//let para = document.createElement("p");
-//country.classList.add("allCountries");
-//para.classList.add("paraName");
-//countries.appendChild(country);
-//country.appendChild(para);
-//console.log(countries);
-//console.log(country);
+
 
 const toggleImg = document.querySelector(".toggleState"); //Light and dark mode controll
 console.log(toggleImg);
