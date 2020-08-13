@@ -245,7 +245,7 @@ label.searchCountry {
 
 .fa-search {
     position: absolute;
-    top: 20px;
+    top: 25px;
     left: 37px;
     color: hsl(0, 0%, 52%);
 }
@@ -253,8 +253,8 @@ label.searchCountry {
 input[type="search"] {
     position: relative;
     width: 88%;
-    height: 9vh;
-    padding-left: 15%;
+    padding: 24px 50px;  
+    padding-left: 15%;  
     display: block;
     border: none;
     border-radius: 4px;
@@ -285,6 +285,7 @@ input[type="search"]:before {
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
     }
     .bordering {
         padding-top: 4%;      
@@ -293,12 +294,7 @@ input[type="search"]:before {
         width: 22%;
         margin: 0 3% 0 0;
     }
-    input[type="search"] {
-        width: 30%;
-        height: 6vh;
-        margin: 0;
-        margin-left: 4%;
-    }
+   
    
     main {
         top: 6vh;
@@ -351,5 +347,16 @@ input[type="search"]:before {
         
     select.continents {
         width: 15%;       
+    }
+
+    label.searchCountry {       
+        margin-left: 38px;
+    }
+    input[type="search"] {
+        width: 400px;
+        padding: 30px 80px;
+     }
+     .fa-search {
+        top: 50px;
     }
 }
