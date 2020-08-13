@@ -78,7 +78,7 @@ input:focus, select.continents:focus {
 }
 
 input#backBtn {
-    width: 100px;  
+    width: 150px;  
     margin: 5% 0 10% 10%; 
 }
 
@@ -279,6 +279,16 @@ input[type="search"]:before {
     justify-content: space-evenly;
 }
 
+label.backButton {
+    position: relative;
+}
+
+.fa-long-arrow-alt-left {
+    position: absolute;
+    left: 70px;
+    top: 2px;
+}
+
 @media screen and (min-width: 616px) {
     .searchAndSelect {
         display: flex;
@@ -307,10 +317,8 @@ input[type="search"]:before {
         width: 35%;
         margin: auto 5%;
     }
-    input#backBtn {
-        width: 15%;
-        height: 6vh;
-        margin: 2% 0 3% 5%;
+    input#backBtn {           
+        margin: 5px 0 5px 25px;
     }
     .primarySecondary {
         width: 100%;
@@ -358,5 +366,8 @@ input[type="search"]:before {
      }
      .fa-search {
         top: 42px;
+    }
+    .fa-long-arrow-alt-left {       
+        left: 60px;       
     }
 }
