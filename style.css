@@ -338,14 +338,17 @@ body.darkMode {
 }
 
 @media screen and (min-width: 1100px) {
+    nav {        
+        padding: 27px;
+    }
     h1 {
         justify-self: flex-start;
-        margin-left: 100px;     
-        font-size: 1.7rem;
+        margin-left: 62px;     
+        font-size: 1.65rem;
     }
     figure.toggleState {
         justify-self: flex-end;
-        margin-right: 70px;       
+        margin-right: 90px;       
         gap: 0;
     }
     main {
@@ -362,7 +365,7 @@ body.darkMode {
         margin-left: 38px;
     }
     input[type="search"] {
-        width: 400px;
+        width: 520px;
         padding: 20px 80px;
      }
      .fa-search {
