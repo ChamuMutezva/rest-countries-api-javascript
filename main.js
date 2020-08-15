@@ -183,7 +183,7 @@ const modalTemplate = (element) => {
 
           		<div class="secondary">
 					<h6>
-						<span class="highLigh"t>Top level dormain:</span> ${element.topLevelDomain}
+						<span class="highLight">Top level dormain:</span> ${element.topLevelDomain}
 					</h6>			
 					<h6>
 						<span class="highLight">Currencies:</span>

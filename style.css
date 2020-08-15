@@ -46,6 +46,7 @@ path {
 
 span.highLight {
     font-weight: 900;
+    font-size: 1rem;
 }
 
 .countryDetails {
@@ -110,6 +111,7 @@ div.countries {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    gap: 20px;
     padding-bottom: 10%;
 }
 
@@ -130,10 +132,9 @@ nav {
 }
 
 .allCountries {
-    width: 300px;
-    /* max-height: 280px;*/
-    margin-right: 5px;
-    margin-top: 3%;   
+    width: 286px;
+    /* max-height: 280px;*/   
+    margin-top: 27px;   
     box-shadow: 0 1px 6px 20px rgba(0, 0, 0, 0.06), 0 1px 2px 4px rgba(0, 0, 0, 0.12);
    /*
     --background-el: hsl(209, 23%, 22%);
@@ -241,7 +242,8 @@ input#backBtn, .border {
 }
 
 .modal h3 {
-    margin: 10% 0 10% 10%;
+    margin: 34px 0 34px 34px;
+    font-size: 2rem;
 }
 
 .secondary {
@@ -338,6 +340,9 @@ body.darkMode {
 }
 
 @media screen and (min-width: 1100px) {
+    input#backBtn {
+        margin: 40px 0 5px 46px;
+    }
     nav {        
         padding: 27px;
     }
@@ -356,9 +361,16 @@ body.darkMode {
         width: 95%;
         margin: auto;
     }
+    .modal .countryDetails {      
+       
+    }
         
     select.continents {
-        width: 15%;       
+        width: 210px;
+        margin-right: 77px;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        padding-left: 20px; 
     }
 
     label.searchCountry {       
@@ -367,11 +379,30 @@ body.darkMode {
     input[type="search"] {
         width: 520px;
         padding: 20px 80px;
+        margin-top: 5px;
+    margin-left: 10px;
+    font-size: 1rem;
      }
      .fa-search {
-        top: 42px;
+        top: 26px;
+    left: 47px;
+    font-size: 1.2rem;
     }
     .fa-long-arrow-alt-left {       
         left: 60px;       
+    }
+    .primarySecondary {
+        width: 50%;  
+        margin-top: 100px;
+    padding-left: 81px;      
+    }
+   .modal img {
+        width: 610px;
+        margin: 87px 42px;
+        height: 432px;
+    }
+    .borderingCity {
+        padding-top: 51px;
+       
     }
 }
