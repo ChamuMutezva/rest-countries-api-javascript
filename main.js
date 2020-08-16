@@ -19,6 +19,14 @@ const toggleImg = document.querySelector(".toggleState"); //Light and dark mode 
 console.log(toggleImg);
 toggleImg.addEventListener("click", () => {
 	const btns = Array.from(document.querySelectorAll(".btn"));
+	const toggleMsg = document.querySelector(".toggleState figcaption");
+	//toggle the Light and dark message
+	if (toggleMsg.innerHTML == "Light Mode") {
+		toggleMsg.innerHTML = "Dark Mode";
+	} else {
+		toggleMsg.innerHTML = "Light Mode"
+	}
+	console.log(toggleMsg)
 	const header = document.querySelector("header")
 	const nav = document.querySelector("nav");
 	nav.classList.toggle("darkMode")
