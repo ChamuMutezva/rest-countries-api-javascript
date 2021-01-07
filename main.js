@@ -224,7 +224,7 @@ const modalTemplate = (element) => {
 	// when the btn of bordering country is clicked 
 	// respective country should be displayed.
 	borderingCountries.addEventListener("click", (evt) => {
-		const apiEndpoint = `https://restcountries.eu/rest/v2/name/${event.target.innerHTML.trim()}`
+		const apiEndpoint = `https://restcountries.eu/rest/v2/name/${evt.target.innerHTML.trim()}`
 		console.log(evt.target.innerHTML)
 		console.log(apiEndpoint)
 		fetch(apiEndpoint)
