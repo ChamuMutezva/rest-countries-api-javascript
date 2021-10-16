@@ -50,7 +50,7 @@ toggleImg.addEventListener("click", () => {
 
 const fetchCountry = (event) => {
 
-	const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
+	const apiEndpoint = `https://restcountries.eu/rest/v3/all `;
 
 	fetch(apiEndpoint)
 		.then(response => response.json())
