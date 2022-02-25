@@ -40,84 +40,75 @@ toggleImg.addEventListener("click", () => {
 	searchCountry.classList.toggle("darkMode");
 	btns[0].classList.toggle("darkButton");
 	btns.map(btn => {
-		if(btns[0].classList.contains("darkButton")) {
+		if (btns[0].classList.contains("darkButton")) {
 			btn.classList.add("darkButton");
 		} else {
 			btn.classList.remove("darkButton");
 		}
-	} );
+	});
 })
 
 const fetchCountry = (event) => {
 
-	const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
+	//const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
+	const apiEndpoint = `https://restcountries.com/v3.1/all`
 
 	fetch(apiEndpoint)
 		.then(response => response.json())
 		.then(data => {
-			//console.log(data);
+			console.log(data);
 			data.forEach(element => {
 
-				const [currency,] = element.currencies;
+				//const currency = element.currencies.name;
 				let country = document.createElement("div");
 				let countryDetails = document.createElement("div");
 				let img = document.createElement("img");
 
 				//create an array to hold all alpha3Code
-				codeArray.push(element.alpha3Code);
+				codeArray.push(element.cca3);
 				//create an array to hold all countries
-				countryArray.push(element.name);
+				countryArray.push(element.name.common);
 
 				country.classList.add("allCountries");
 				countryDetails.classList.add("paraName");
 				img.classList.add("flags");
-				img.alt = `${element.name}'s flag`;
+				img.alt = `${element.name.common}'s flag`;
 
 				country.appendChild(img);
 				countries.appendChild(country);
 				country.appendChild(countryDetails);
-				countryDetails.innerHTML = `
-				
-				<h2> ${element.name}</h2>
+
+				countryDetails.innerHTML = `				
+				<h2> ${element.name.common}</h2>
 				<h5>Population: ${element.population.toLocaleString()}  </h5>
 				<h5>Region: <span>${element.region}</span></h5>
-				<h5>Capital:  ${element.capital} </h5>
-			  
+				<h5>Capital:  ${element.capital} </h5>			  
 				`
 
-				//let modalWrapper = document.createElement("div");
-				img.src = `${element.flag}`;
-
+				img.src = `${element.flags.svg}`;
 				img.addEventListener("click", function (evt) {
-					//console.log(element.name);
-					//console.log(mainWrapper);
 					mainWrapper.style.display = "none";
 					modal.style.display = "block";
-					/*while(modalWrapper.firstChild) {
-						console.log(modalWrapper.firstChild);
-						modalWrapper.removeChild(modalWrapper.lastChild); 
-					}*/
-					//console.log(codeArray);
 					borderArray = [];
-					element.borders.map(country => {
-						console.log(country)
-						codeArray.forEach((elm, index) => {
 
-							if (country == elm) {
-								borderArray.push(countryArray[index]);
-								console.log(countryArray[index]);
-							}
+					if (typeof element.borders != "undefined") {
+						element.borders.map(country => {
+							console.log(country)
+							codeArray.forEach((elm, index) => {
+
+								if (country == elm) {
+									borderArray.push(countryArray[index]);
+									console.log(countryArray[index]);
+								}
+							})
 						})
-					});
-					//console.log(borderArray);
-					//console.log(modal.children);
+					}
+
+
 					modal.appendChild(modalWrapper);
 					modalTemplate(element)
-
-
 				})
-				//modal.removeChild(modalWrapper)
-				//modal.appendChild(modalWrapper);
+
 			});
 
 		})
@@ -146,42 +137,38 @@ searchCountry.addEventListener("input", (e) => {
 			country.parentElement.parentElement.style.display = "none";
 		}
 	})
-
-	console.log(e.target.value);
 })
-//console.log(searchCountry);
 
 const continentSelect = document.querySelector("select");
-//console.log(continentSelect);
 continentSelect.onchange = (evt) => {
 	const availableCountries = Array.from(document.querySelectorAll(".paraName span"));
 	availableCountries.forEach(country => {
 		const myCountry = country.innerHTML.toLowerCase().trim();
-
 		if (myCountry == continentSelect.value || continentSelect.value === "all") {
 			country.parentElement.parentElement.parentElement.style.display = "block";
 		} else {
 			country.parentElement.parentElement.parentElement.style.display = "none";
 		}
 	})
-	//console.log(continentSelect.value);
-	//console.log(evt)
 }
 
-//console.log(countrySelect);
-//console.log(filterContinent);
-// const modalTemplate = (element) =>  {}
-
 const modalTemplate = (element) => {
-	console.log(element)
+	console.log(element.currencies)
+	console.log(Object.keys(element.currencies))
+	const currency = (element.currencies)[Object.keys(element.currencies)].name
+
+	const langs = Object.values(element.languages)
+	console.log(langs)
+
+
 	modalWrapper.innerHTML = `					
         
 		<div class="countryDetails">		
-			<img src= ${element.flag} alt="" tabindex=0>
+			<img src= ${element.flags.svg} alt="" tabindex=0>
 			<div class="primarySecondary">
 				<div class="primary">           
-           			 <h3>${element.name}</h3>
-            	 	 <h6><span class="highLight">Native name:</span> ${element.nativeName}</h6>
+           			 <h3>${element.name.common}</h3>
+            	 	 <h6><span class="highLight">Official name:</span>${element.name.official}</h6>
             	 	 <h6><span class="highLight">Population:</span> ${element.population.toLocaleString()}</h6>
            			 <h6><span class="highLight">Region:</span> ${element.region}</h6>
             	 	 <h6><span class="highLight">Sub region:</span> ${element.subregion}</h6>
@@ -191,22 +178,24 @@ const modalTemplate = (element) => {
 
           		<div class="secondary">
 					<h6>
-						<span class="highLight">Top level dormain:</span> ${element.topLevelDomain}
+						<span class="highLight">Start of Week:</span> ${element.startOfWeek}
 					</h6>			
 					<h6>
-						<span class="highLight">Currencies:</span>
-						<span>
-							${element.currencies.map(current => current.code)}
-						</span>	
+						<span class="highLight">Currencies:</span>					
+						<span>${currency}</span>			
+						
 					</h6>			
 					<h6><span class="highLight">Languages:</span> 
-						<span>${element.languages.map(language => language.name)}</span>
+						${langs.map(lang => `
+						   <span>${lang}</span>
+						`)}
+						
 					</h6>
 		 		 </div>
   
 		 		 <div class="borderingCity">
 		  			<h6><span class="highLight">Border countries:</span></h6>
-		  			<div class="bordering">${borderArray.map(border => `
+		  			<div class="bordering">${element.borders.map(border => `
 		  	 			<button class="border btn"> ${border}</button> `).join("")}
 		   			</div>
 				 </div>		  
@@ -224,7 +213,7 @@ const modalTemplate = (element) => {
 	// when the btn of bordering country is clicked 
 	// respective country should be displayed.
 	borderingCountries.addEventListener("click", (evt) => {
-		const apiEndpoint = `https://restcountries.eu/rest/v2/name/${evt.target.innerHTML.trim()}`
+		const apiEndpoint = `https://restcountries.com/v3.1/alpha/${evt.target.innerHTML.trim()}`
 		console.log(evt.target.innerHTML)
 		console.log(apiEndpoint)
 		fetch(apiEndpoint)
@@ -233,17 +222,17 @@ const modalTemplate = (element) => {
 				console.log(data[0])
 				//call the modalTemplate and fetched data for a particular
 				//country be applied.
-					borderArray = [];
-					data[0].borders.map(country => {
-						console.log(country)
-						codeArray.forEach((elm, index) => {
-	
-							if (country == elm) {
-								borderArray.push(countryArray[index]);
-								console.log(countryArray[index]);
-							}
-						})
-					});
+				borderArray = [];
+				data[0].borders.map(country => {
+					console.log(country)
+					codeArray.forEach((elm, index) => {
+
+						if (country == elm) {
+							borderArray.push(countryArray[index]);
+							console.log(countryArray[index]);
+						}
+					})
+				});
 				//****************** */
 				console.log(data[0].borders)
 				modalTemplate(data[0])
@@ -254,3 +243,4 @@ const modalTemplate = (element) => {
 
 
 }
+
