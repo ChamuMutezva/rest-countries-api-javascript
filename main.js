@@ -155,6 +155,8 @@ continentSelect.onchange = (evt) => {
 const modalTemplate = (element) => {
 	const { currencies, languages, borders, flags, name, population, region, capital, subregion, startOfWeek } = element
 	console.log(currencies)
+	console.log(codeArray)
+	console.log(countryArray)
 	const currencyObj = Object.keys(currencies)	
 	console.log(currencyObj)
 	//	const currencyCon =  currencyObj.map(curr => curr)
@@ -204,7 +206,7 @@ const modalTemplate = (element) => {
 		  			<h6><span class="highLight">Border countries:</span></h6>
 		  			<div class="bordering">					 
 					  ${borderState ?
-			borders.map(border => `<button class="border btn"> ${border}</button> `).join("")
+			borderArray.map(border => `<button class="border btn"> ${border}</button> `).join("")
 			: `<span>no borders</span>`} 
 						
 		   			</div>
@@ -224,13 +226,13 @@ const modalTemplate = (element) => {
 	// when the btn of bordering country is clicked 
 	// respective country should be displayed.
 	borderingCountries.addEventListener("click", (evt) => {
-		const apiEndpoint = `https://restcountries.com/v3.1/alpha/${evt.target.innerHTML.trim()}`
+		const apiEndpoint = `https://restcountries.com/v3.1/name/${evt.target.innerHTML.trim()}`
 		console.log(evt.target.innerHTML)
 		console.log(apiEndpoint)
 		fetch(apiEndpoint)
 			.then(response => response.json())
 			.then(data => {
-				console.log(data[0])
+				console.log(data)
 				//call the modalTemplate and fetched data for a particular
 				//country be applied.
 				borderArray = [];
@@ -254,4 +256,10 @@ const modalTemplate = (element) => {
 
 
 }
+
+/*
+	  ${borderState ?
+			borders.map(border => `<button class="border btn"> ${border}</button> `).join("")
+			: `<span>no borders</span>`} 
+			*/
 
