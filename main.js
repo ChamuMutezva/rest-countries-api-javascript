@@ -15,11 +15,11 @@ let countryArray = []; // an array to hold the names of the countries
 let borderArray = []; // an array to hold countries bordering a country
 
 
-const toggleImg = document.querySelector(".toggleState"); //Light and dark mode controll
+const toggleImg = document.querySelector(".toggle-state-btn"); //Light and dark mode controll
 // console.log(toggleImg);
 toggleImg.addEventListener("click", () => {
 	const btns = Array.from(document.querySelectorAll(".btn"));
-	const toggleMsg = document.querySelector(".toggleState span");
+	const toggleMsg = document.querySelector(".toggle-state-btn span");
 	//toggle the Light and dark message
 	if (toggleMsg.innerHTML == "Light Mode") {
 		toggleMsg.innerHTML = "Dark Mode";
@@ -78,11 +78,13 @@ const fetchCountry = (event) => {
 				countries.appendChild(country);
 				country.appendChild(countryDetails);
 
-				countryDetails.innerHTML = `				
-				<h2> ${element.name.common}</h2>
-				<h5>Population: ${element.population.toLocaleString()}  </h5>
-				<h5>Region: <span>${element.region}</span></h5>
-				<h5>Capital:  ${element.capital} </h5>			  
+				countryDetails.innerHTML = `
+				<div class="country-details-wrapper">				
+				  	    <h2 class="country-details-title"> ${element.name.common}</h2>
+				    	<p class="country-population">Population: ${element.population.toLocaleString()}</p>
+				        <p class="country-region">Region: <span>${element.region}</span></p>
+				        <p class="country-population">Capital:  ${element.capital} </p>
+				</div>			  
 				`
 
 				img.src = `${element.flags.svg}`;
@@ -128,46 +130,56 @@ fetchCountry();
 
 searchCountry.addEventListener("input", (e) => {
 	const resultCountry = e.target.value;
-	const availableCountries = Array.from(document.querySelectorAll(".paraName h2"));
-	availableCountries.forEach(country => {
+	console.log(resultCountry)
+	const availableCountries = Array.from(document.querySelectorAll(".country-details-title"));
+	availableCountries.forEach(country => {		
 		const myCountry = country.innerHTML.toLowerCase().trim();
+	//	console.log(myCountry)
 		if (myCountry.includes(resultCountry.toLowerCase().trim())) {
-			country.parentElement.parentElement.style.display = "block";
+			console.log(country)
+			//country.closest(".allCountries").style.display = "block"
+			country.closest(".allCountries").classList.remove("hide-card")
+			//country.parentElement.parentElement.style.display = "block";
 		} else {
-			country.parentElement.parentElement.style.display = "none";
+			//country.closest(".allCountries").style.display = "none"
+			country.closest(".allCountries").classList.add("hide-card")
+		//	country.parentElement.parentElement.style.display = "none";
 		}
 	})
 })
 
 const continentSelect = document.querySelector("select");
 continentSelect.onchange = (evt) => {
-	const availableCountries = Array.from(document.querySelectorAll(".paraName span"));
+	const availableCountries = Array.from(document.querySelectorAll(".country-region span"));
+	console.log(continentSelect)
+	console.log(availableCountries)
 	availableCountries.forEach(country => {
 		const myCountry = country.innerHTML.toLowerCase().trim();
+		console.log(myCountry)
 		if (myCountry == continentSelect.value || continentSelect.value === "all") {
-			country.parentElement.parentElement.parentElement.style.display = "block";
+			country.closest(".allCountries").classList.remove("hide-card")			
 		} else {
-			country.parentElement.parentElement.parentElement.style.display = "none";
+			country.closest(".allCountries").classList.add("hide-card")			
 		}
 	})
 }
 
 const modalTemplate = (element) => {
 	const { currencies, languages, borders, flags, name, population, region, capital, subregion, startOfWeek } = element
-	console.log(currencies)
-	console.log(codeArray)
-	console.log(countryArray)
+	//console.log(currencies)
+	//console.log(codeArray)
+	//console.log(countryArray)
 	const currencyObj = Object.keys(currencies)	
-	console.log(currencyObj)
+	//console.log(currencyObj)
 	//	const currencyCon =  currencyObj.map(curr => curr)
 	//	console.log(currencyCon)
 	const currenceList = currencyObj.map(cur => currencies[cur].name)
-	console.log(currenceList)
+	//console.log(currenceList)
 	const langs = Object.values(languages)
 	const borderState = typeof borders !== "undefined"
 
-	console.log(borderState)
-	console.log(langs)
+//	console.log(borderState)
+//	console.log(langs)
 
 	modalWrapper.innerHTML = `					
         
@@ -176,34 +188,37 @@ const modalTemplate = (element) => {
 			<div class="primarySecondary">
 				<div class="primary">           
            			 <h3>${name.common}</h3>
-            	 	 <h6><span class="highLight">Official name:</span>${name.official}</h6>
-            	 	 <h6><span class="highLight">Population:</span> ${population.toLocaleString()}</h6>
-           			 <h6><span class="highLight">Region:</span> ${region}</h6>
-            	 	 <h6><span class="highLight">Sub region:</span> ${subregion}</h6>
-            	 	 <h6><span class="highLight">Capital:</span> ${capital}</h6>
+					 <div>
+            	 	 	 <p><span class="highLight">Official name:</span>${name.official}</p>
+            	 		 <p><span class="highLight">Population:</span> ${population.toLocaleString()}</p>
+           				 <p><span class="highLight">Region:</span> ${region}</p>
+            	 	 	 <p><span class="highLight">Sub region:</span> ${subregion}</p>
+            	 	 	 <p><span class="highLight">Capital:</span> ${capital}</p>
+					  </div>
 			    </div>
 			
 
           		<div class="secondary">
-					<h6>
+					<p>
 						<span class="highLight">Start of Week:</span> ${startOfWeek}
-					</h6>			
-					<h6>
+					</p>			
+					<p>
 						<span class="highLight">Currencies:</span>	
 						${currenceList.map(cur => `<span>${cur}</span>`)}			
 									
 						
-					</h6>			
-					<h6><span class="highLight">Languages:</span> 
+					</p>			
+					<p>
+					   <span class="highLight">Languages:</span> 
 						${langs.map(lang => `
 						   <span>${lang}</span>
 						`)}
 						
-					</h6>
+					</p>
 		 		 </div>
   
 		 		 <div class="borderingCity">
-		  			<h6><span class="highLight">Border countries:</span></h6>
+		  			<p><span class="highLight">Border countries:</span></p>
 		  			<div class="bordering">					 
 					  ${borderState ?
 			borderArray.map(border => `<button class="border btn"> ${border}</button> `).join("")
@@ -256,10 +271,4 @@ const modalTemplate = (element) => {
 
 
 }
-
-/*
-	  ${borderState ?
-			borders.map(border => `<button class="border btn"> ${border}</button> `).join("")
-			: `<span>no borders</span>`} 
-			*/
 

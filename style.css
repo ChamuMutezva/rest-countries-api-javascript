@@ -1,13 +1,114 @@
-* {
-    margin: 0;
-    padding: 0;
+/* ----------------------------------- */
+/*                 RESET               */
+/* ------------------------------------*/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul,
+ol elements with a list role,
+which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: var(--ff-ibm);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    /* added line */
+    border: 0;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 :root {
     --background-el: hsl(0, 0%, 100%);
-	--body: hsl(0, 0%, 98%);
-  /*  --background-body-dark: hsl(207, 26%, 17%);
+    --body: hsl(0, 0%, 98%);
+    --spacer-16: 1rem;
+    --spacer-30: 1.875rem;
+    --clr-almost-black: #111517;
+    /*  --background-body-dark: hsl(207, 26%, 17%);
     --background-light-mode: hsl(0, 0%, 98%);
     --background-element-dark: hsl(209, 23%, 22%);
     --text-element-light: hsl(0, 0%, 100%);
@@ -17,24 +118,27 @@
     --light-mode-elements: hsl(0, 0%, 100%); */
 }
 
-html {
-    overflow-x: hidden;
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 body {
     font-family: "Numito Sans", sans-serif;
     background-color: var(--body);
     color: hsl(200, 15%, 8%);
-    font-size: 14px;
-    /* background: hsl(207, 26%, 17%);*/
+    overflow-x: hidden;
 }
 
-h1 {
-    font-size: 1.2rem;
-    font-weight: 600;  
+.heading {
+    font-size: calc(14rem / 16);
+    font-weight: 600;
+    color: var(--clr-almost-black);
+    font-weight: 800;
 }
-figcaption {
-    font-weight: 600;  
+
+.theme {
+    font-size: calc(12rem / 16);
 }
 
 /* svg change colour, and appy border */
@@ -44,28 +148,29 @@ path {
     stroke-width: 30px;
 }
 
-span.highLight {
+.highLight {
     font-weight: 900;
     font-size: 1rem;
 }
 
 .countryDetails {
-    /*color: white; */
-    font-weight: 100;
-    /* padding-left: 5%; */
+    font-weight: 100;   
 }
 
-header {
-    top: 0;
-    /*position: fixed;*/
-    width: 100vw;
-    z-index: 10;
-    color: black;
-    font-size: 14px;
-   /* --background-el: hsl(209, 23%, 22%); */
+.header {    
+    color: var(--clr-almost-black);     
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+}
 
-   /* box-shadow: 1px 19px 5px 13px #f8f7f6;*/
+.nav {
+    padding-block: var(--spacer-30);
+    padding-inline: var(--spacer-16);
+    max-width: 80rem;
+}
+
+.toggle-state-btn {
+    background-color: inherit;
+    border: none;
 }
 
 svg.svg-inline--fa.fa-moon.fa-w-16 {
@@ -86,14 +191,12 @@ img {
 
 div .paraName {
     padding-left: 8%;
-  /*  color: white; */
+    /*  color: white; */
     padding-bottom: 5%;
 }
 
 .paraName h2 {
     margin-top: 5%;
-     /* margin-left: 5%;
-       color: white; */
 }
 
 h5 {
@@ -107,25 +210,15 @@ figure {
     justify-items: center;
 }
 
-div.countries {
+.countries {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 20px;
-    padding-bottom: 10%;
+    padding-bottom: 2rem;
 }
 
-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    font-size: small;
-    justify-items: center;
-    align-items: center;
-    padding: 25px;
-    /* background-color: var(--background-element-dark);
-    background-color: hsl(209, 23%, 22%); */
-  
-}
+
 
 .mainWrapper {
     font-size: 14px;
@@ -133,10 +226,10 @@ nav {
 
 .allCountries {
     width: 286px;
-    /* max-height: 280px;*/   
-    margin-top: 27px;   
+    /* max-height: 280px;*/
+    margin-top: 27px;
     box-shadow: 0 1px 6px 20px rgba(0, 0, 0, 0.06), 0 1px 2px 4px rgba(0, 0, 0, 0.12);
-   /*
+    /*
     --background-el: hsl(209, 23%, 22%);
     background-color: var(--background-el);
    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);*/
@@ -148,11 +241,14 @@ nav {
     cursor: pointer;
 }
 
-main {
+.hide-card {
+    display: none;
+}
+
+.main {
     position: relative;
-   /* top: 20vh; 
-    z-index: 1;
-    margin-top: 10px; */
+    max-width: 80rem;
+    padding-inline: var(--spacer-16);
 }
 
 /* Seach and Select continents section */
@@ -164,22 +260,24 @@ main {
 }
 
 select.continents {
-    width: 45%;   
-  background-color: var(--background-el);
-    margin: 5% 0 5% 7%;
-    padding: 15px;
-    border-radius: 5px;    
+   
+    background-color: var(--background-el);
+   /* margin: 5% 0 5% 7%;
+    width: 45%;*/
+    padding: 1rem;
+    border-radius: 5px;
 }
 
 select.continents.darkMode {
-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 100%);
 }
+
 input[type="search"].darkMode {
     color: hsl(0, 0%, 100%);
 }
 
 label.searchCountry {
-    position: relative;    
+    position: relative;
 }
 
 .fa-search {
@@ -191,15 +289,15 @@ label.searchCountry {
 
 input[type="search"] {
     position: relative;
-    width: 88%;
-    padding: 24px 50px;  
-    padding-left: 15%;  
+    width: 100%;
+    padding: 24px 50px;
+    padding-left: 15%;
     display: block;
     border: none;
     border-radius: 4px;
     margin: 5% auto;
     background-color: var(--background-el);
-    /*--background-el: hsl(209, 23%, 22%);  */ 
+    /*--background-el: hsl(209, 23%, 22%);  */
     color: hsl(200, 15%, 8%);
 }
 
@@ -227,18 +325,20 @@ input[type="search"]:before {
 }
 
 input#backBtn {
-    width: 150px;  
-    margin: 5% 0 10% 10%; 
+    width: 150px;
+    margin: 5% 0 10% 10%;
 }
 
-input#backBtn, .border {      
-   --background-el: hsl(209, 23%, 22%);  
-   padding: 10px; 
+input#backBtn,
+.border {
+    --background-el: hsl(209, 23%, 22%);
+    padding: 10px;
     border: none;
 }
- .border {    
-    margin: 5px auto; 
-    width: 31%;    
+
+.border {
+    margin: 5px auto;
+    width: 31%;
 }
 
 .modal h3 {
@@ -258,7 +358,7 @@ input#backBtn, .border {
 }
 
 .bordering {
-   padding: 20px 10px;
+    padding: 20px 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -278,17 +378,19 @@ label.backButton {
 
 /* dark modes */
 .darkHeader {
-    color:hsl(0, 0%, 100%) ;
-    background-color:hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(209, 23%, 22%);
 }
+
 .darkButton {
-    color:hsl(0, 0%, 100%) ;
-    background-color:hsl(209, 23%, 22%);
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(209, 23%, 22%);
 }
+
 body.darkMode {
     color: hsl(0, 0%, 100%);
-	--body: hsl(207, 26%, 17%);
-	--background-el: hsl(209, 23%, 22%);  
+    --body: hsl(207, 26%, 17%);
+    --background-el: hsl(209, 23%, 22%);
 
 }
 
@@ -300,41 +402,47 @@ body.darkMode {
         justify-content: space-between;
         align-items: center;
     }
+
     .bordering {
-        padding-top: 4%;      
+        padding-top: 4%;
     }
-    select.continents {
-        width: 22%;
-        margin: 0 3% 0 0;
+
+    .continents {
+        width: 22%;       
     }
-   
-   
+
+
     main {
         top: 6vh;
     }
+
     /* modal */
     .modal .countryDetails {
         display: flex;
     }
+
     .modal img {
         width: 35%;
         margin: auto 5%;
     }
-    input#backBtn {           
+
+    input#backBtn {
         margin: 5px 0 5px 25px;
     }
+
     .primarySecondary {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         /* font-size: 1.5em; */
     }
+
     .borderingCity {
         padding-top: 6%;
         grid-column: 1/3;
     }
 
-    figure {        
+    figure {
         justify-items: end;
     }
 }
@@ -343,66 +451,71 @@ body.darkMode {
     input#backBtn {
         margin: 40px 0 5px 46px;
     }
-    nav {        
-        padding: 27px;
-    }
-    h1 {
-        justify-self: flex-start;
-        margin-left: 62px;     
-        font-size: 1.65rem;
-    }
-    figure.toggleState {
-        justify-self: flex-end;
-        margin-right: 90px;       
-        gap: 0;
-    }
-    main {
-        
-        width: 95%;
+
+    .nav {
+        padding-inline: 5rem;
         margin: auto;
     }
-    .modal .countryDetails {      
-       
-    }
-        
-    select.continents {
-        width: 210px;
-        margin-right: 77px;
-        margin-bottom: 20px;
-        font-size: 1rem;
-        padding-left: 20px; 
+
+    .heading {
+        justify-self: flex-start;
+        font-size: 1.65rem;
     }
 
-    label.searchCountry {       
-        margin-left: 38px;
+    .toggle-state-btn {
+        justify-self: flex-end;       
+        gap: 0;
     }
+
+    .main {
+        padding-inline: 5rem;
+        margin: auto;
+    }
+
+    select.continents {
+     /*   width: 210px;
+        margin-right: 77px;
+        margin-bottom: 20px;
+        */
+        font-size: 1rem;
+        padding-block: 1.2rem;
+        padding-left: 20px;
+    }
+
     input[type="search"] {
-        width: 520px;
         padding: 20px 80px;
+      /*  width: 520px;
+       
         margin-top: 5px;
-    margin-left: 10px;
-    font-size: 1rem;
-     }
-     .fa-search {
+        */
+        margin-left: 10px;
+        font-size: 1rem;
+    }
+
+    .fa-search {
         top: 26px;
-    left: 47px;
-    font-size: 1.2rem;
+        left: 47px;
+        font-size: 1.2rem;
     }
-    .fa-long-arrow-alt-left {       
-        left: 60px;       
+
+    .fa-long-arrow-alt-left {
+        left: 60px;
     }
+
     .primarySecondary {
-        width: 50%;  
+        width: 50%;
         margin-top: 100px;
-    padding-left: 81px;      
+        padding-left: 81px;
     }
-   .modal img {
+
+    .modal img {
         width: 610px;
         margin: 87px 42px;
         height: 432px;
     }
+
     .borderingCity {
         padding-top: 51px;
-       
+
     }
 }

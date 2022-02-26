@@ -9,11 +9,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="manifest" href="manifest.json">
-<!--  <meta name="msapplication-starturl" content="index.html">-->
+  <!--  <meta name="msapplication-starturl" content="index.html">-->
   <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#9ad5a8">
   <meta name="msapplication-TileColor" content="#603cba">
   <meta name="theme-color" content="#ffffff">
- 
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap" rel="stylesheet">
   <!--<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">-->
@@ -23,55 +23,57 @@
 </head>
 
 <body>
-  <header>
-    <nav>
-      <h1>Where in the world?</h1>
-      <button class="toggleState">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon"
-          class="svg-inline--fa fa-moon fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor"
-            d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z">
-          </path>
-        </svg>
-        <span class="theme">Dark Mode</span>
-      </button>
-    </nav>
+  <div class="container">
+    <header class="header">
+      <nav class="nav flex">
+        <h1 class="heading">Where in the world?</h1>
+        <button class="toggle-state-btn">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="moon"
+            class="svg-inline--fa fa-moon fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z">
+            </path>
+          </svg>
+          <span class="theme">Dark Mode</span>
+        </button>
+      </nav>
 
-  </header>
-  <main>
-    <div class="mainWrapper">
-      <div class="searchAndSelect">
-        <label class="searchCountry">
-          <input type="search" placeholder="search for a country" tabindex="0"/>
-          <i class="fas fa-search"></i>
-        </label>        
-        
-        <select name="selectCont" class="continents" >
-          <label>Filter by Region</label>
-          <optgroup >
-            <option value="all">All</option>
-            <option value="africa">Africa</option>
-            <option value="americas">America</option>
-            <option value="oceania">Oceania</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-          </optgroup>
-        </select>
-        
-      </div>
+    </header>
+    <main class="main">
+      <div class="mainWrapper">
+        <div class="searchAndSelect">
+          <label class="searchCountry">
+            <input type="search" placeholder="search for a country" tabindex="0" />
+            <i class="fas fa-search"></i>
+          </label>
 
-      <div class="countries">
+          <select name="selectCont" class="continents">
+            <label>Filter by Region</label>
+            <optgroup>
+              <option value="all">All</option>
+              <option value="africa">Africa</option>
+              <option value="americas">America</option>
+              <option value="oceania">Oceania</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+            </optgroup>
+          </select>
+
+        </div>
+
+        <div class="countries">
+        </div>
       </div>
-    </div>
-    <div class="modal">
-      <label class="backButton">
-        <input type="button" class="btn" id="backBtn" value="back">
-        <i class="fas fa-long-arrow-alt-left"></i>
-      </label>
-      
-    </div>
-  </main>
-<!--
+      <div class="modal">
+        <label class="backButton">
+          <input type="button" class="btn" id="backBtn" value="back">
+          <i class="fas fa-long-arrow-alt-left"></i>
+        </label>
+
+      </div>
+    </main>
+  </div>
+  <!--
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
