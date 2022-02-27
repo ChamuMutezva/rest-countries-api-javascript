@@ -44,12 +44,12 @@
         <div class="searchAndSelect">
           <label class="searchCountry">
             <i class="fas fa-search"></i>
-            <input type="search" placeholder="search for a country" tabindex="0" />
-
+            <input type="search" placeholder="search for a country" aria-labelledby="search-label" />
+            <span id="search-label" class="sr-only">Search for a country</span>
           </label>
 
-          <select name="selectCont" class="continents">
-            <label>Filter by Region</label>
+          <select name="selectCont" class="continents" aria-labelledby="select-label">
+            <label id="select-label">Filter by Region</label>
             <optgroup>
               <option value="all">All</option>
               <option value="africa">Africa</option>
@@ -68,7 +68,7 @@
       <div class="modal">
         <label class="backButton">
           <input type="button" class="btn back-btn" id="backBtn" value="back">
-          <i class="fas fa-long-arrow-alt-left"></i>
+          <i class="fas fa-long-arrow-alt-left"></i>         
         </label>
 
       </div>

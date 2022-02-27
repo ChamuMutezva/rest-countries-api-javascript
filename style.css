@@ -108,14 +108,6 @@ select {
     --spacer-16: 1rem;
     --spacer-30: 1.875rem;
     --clr-almost-black: #111517;
-    /*  --background-body-dark: hsl(207, 26%, 17%);
-    --background-light-mode: hsl(0, 0%, 98%);
-    --background-element-dark: hsl(209, 23%, 22%);
-    --text-element-light: hsl(0, 0%, 100%);
-    --background-element-light: hsl(0, 0%, 100%);
-    --light-mode-text: hsl(200, 15%, 8%);
-    --dark-mode-text: hsl(0, 0%, 100%) --light-mode-input: hsl(0, 0%, 52%);
-    --light-mode-elements: hsl(0, 0%, 100%); */
 }
 
 .flex {
@@ -189,7 +181,7 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
 }
 
 .flags {
-    min-height: 160px;
+    min-height: 10rem;
 }
 
 .paraName {
@@ -269,12 +261,6 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
 
 /* Seach and Select continents section */
 
-.selectOptions {
-    text-align: left;
-    margin-left: 10%;
-    width: 80%;
-}
-
 .continents {
     background-color: var(--clr-white);
     width: 60%;
@@ -298,7 +284,7 @@ input[type="search"].darkMode {
 .fa-search {
     position: absolute;
     top: 20%;
-    left: 37px;
+    left: 2.5rem;
     color: hsl(0, 0%, 52%);
     z-index: 100;
 }
@@ -320,7 +306,9 @@ input[type="search"] {
 .modal {
     position: absolute;
     width: 100%;
+    max-width: 80rem;
     min-height: 100vh;
+    margin-inline: auto;
     top: 0;
     left: 0;
     display: none;
@@ -375,12 +363,6 @@ input[type="search"] {
     display: flex;
     gap: 1rem;
     margin-bottom: .75rem;
-}
-
-.modal h6 {
-    padding-left: 10%;
-    margin-top: 4%;
-    font-weight: 100;
 }
 
 .bordering {
@@ -441,10 +423,6 @@ body.darkMode {
         align-items: center;
     }
 
-    .bordering {
-        padding-top: 4%;
-    }
-
     .bordering-city {
         grid-column: 1/3;
     }
@@ -469,7 +447,6 @@ body.darkMode {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        /* font-size: 1.5em; */
     }
 
 }
@@ -486,8 +463,8 @@ body.darkMode {
 }
 
 @media screen and (min-width: 67.5rem) {
-    input#backBtn {
-        margin: 40px 0 5px 46px;
+    .back-btn {
+        margin: 2.5rem  0;
     }
 
     .nav {
@@ -506,10 +483,10 @@ body.darkMode {
         margin: auto;
     }
 
-    select.continents {
+    .continents {
         font-size: 1rem;
         padding-block: 1.2rem;
-        padding-left: 20px;
+        padding-left: 1.25rem;
     }
 
     input[type="search"] {
@@ -525,7 +502,7 @@ body.darkMode {
     }
 
     .fa-long-arrow-alt-left {
-        left: 60px;
+        left: 1rem;
     }
 
     .countries {
@@ -534,13 +511,11 @@ body.darkMode {
 
     .country-details {
         display: flex;
-        gap: var(--spacer-30);
+        gap: var(--spacer-30) ;
     }
 
-    .modal img {
-        width: 610px;
-        margin: 87px 42px;
-        height: 432px;
+    .country-details-img {
+        min-height: 27rem;
     }
 
     .primary-secondary {
