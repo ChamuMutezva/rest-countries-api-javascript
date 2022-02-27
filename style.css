@@ -229,12 +229,13 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--clr-white);
-    color: var(--clr-almost-black);   
+    color: var(--clr-almost-black);
     padding-inline: 0;
     padding-block-end: 1rem;
     padding-block-start: 0;
 }
-.image-btn { 
+
+.image-btn {
     border: none;
     outline: none;
     padding: 0;
@@ -394,6 +395,8 @@ label.backButton {
 
 .languages {
     flex-wrap: wrap;
+    display: flex;
+    gap: .25rem;
 }
 
 /* dark modes */
@@ -467,7 +470,7 @@ body.darkMode {
 
 @media screen and (min-width: 67.5rem) {
     .back-btn {
-        margin: 2.5rem  0;
+        margin: 2.5rem 0;
     }
 
     .nav {
@@ -514,7 +517,7 @@ body.darkMode {
 
     .country-details {
         display: flex;
-        gap: var(--spacer-30) ;
+        gap: var(--spacer-30);
     }
 
     .country-details-img {

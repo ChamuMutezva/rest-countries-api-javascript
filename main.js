@@ -1,9 +1,6 @@
 const countries = document.querySelector(".countries");
-//let countrySelect = Array.from(document.querySelectorAll(".allCountries"));
 const mainWrapper = document.querySelector(".mainWrapper");
-//const imgCountry = Array.from(document.querySelectorAll(".flags"));
 const filterContinent = Array.from(document.querySelectorAll("option"));
-//const selectCountry = document.querySelector(".allCountries");
 const modal = document.querySelector(".modal");
 const backBtn = document.getElementById("backBtn");
 const continents = document.querySelector(".continents");
@@ -28,12 +25,13 @@ toggleImg.addEventListener("click", () => {
 		toggleMsg.innerHTML = "Light Mode"
 		toggleMsg.classList.add("theme-light")
 	}
-	
+
 	const header = document.querySelector("header")
 	const nav = document.querySelector("nav");
-	nav.classList.toggle("darkMode")
-	header.classList.toggle("darkHeader")	
 	const body = document.querySelector("body");
+
+	nav.classList.toggle("darkMode")
+	header.classList.toggle("darkHeader")
 	body.classList.toggle("darkMode");
 	modal.classList.toggle("darkMode");
 	continents.classList.toggle("darkMode");
@@ -41,7 +39,6 @@ toggleImg.addEventListener("click", () => {
 	btns[0].classList.toggle("darkButton");
 
 	countryBtns.forEach(btn => btn.classList.toggle("theme-light"))
-
 	btns.map(btn => {
 		if (btns[0].classList.contains("darkButton")) {
 			btn.classList.add("darkButton");
@@ -52,8 +49,7 @@ toggleImg.addEventListener("click", () => {
 })
 
 const fetchCountry = (event) => {
-
-	//const apiEndpoint = `https://restcountries.eu/rest/v2/all `;
+	//old api that was changed - `https://restcountries.eu/rest/v2/all `;
 	const apiEndpoint = `https://restcountries.com/v3.1/all`
 
 	fetch(apiEndpoint)
@@ -112,13 +108,11 @@ const fetchCountry = (event) => {
 					mainWrapper.style.display = "none";
 					modal.style.display = "block";
 					borderArray = [];
-
 					if (typeof element.borders != "undefined") {
-						element.borders.map(country => {							
+						element.borders.map(country => {
 							codeArray.forEach((elm, index) => {
-
 								if (country == elm) {
-									borderArray.push(countryArray[index]);									
+									borderArray.push(countryArray[index]);
 								}
 							})
 						})
@@ -147,17 +141,15 @@ fetchCountry();
 
 searchCountry.addEventListener("input", (e) => {
 	const resultCountry = e.target.value;
-	console.log(resultCountry)
 	const availableCountries = Array.from(document.querySelectorAll(".country-details-title"));
 	availableCountries.forEach(country => {
 		const myCountry = country.innerHTML.toLowerCase().trim();
-		//	console.log(myCountry)
 		if (myCountry === resultCountry.toLowerCase().trim()) {
 			country.closest(".allCountries").classList.remove("hide-card")
-		} else if (myCountry.includes(resultCountry.toLowerCase().trim())) {						
-			country.closest(".allCountries").classList.remove("hide-card")			
-		} else {			
-			country.closest(".allCountries").classList.add("hide-card")			
+		} else if (myCountry.includes(resultCountry.toLowerCase().trim())) {
+			country.closest(".allCountries").classList.remove("hide-card")
+		} else {
+			country.closest(".allCountries").classList.add("hide-card")
 		}
 	})
 })
@@ -165,11 +157,8 @@ searchCountry.addEventListener("input", (e) => {
 const continentSelect = document.querySelector("select");
 continentSelect.onchange = (evt) => {
 	const availableCountries = Array.from(document.querySelectorAll(".country-region span"));
-	console.log(continentSelect)
-	console.log(availableCountries)
 	availableCountries.forEach(country => {
 		const myCountry = country.innerHTML.toLowerCase().trim();
-		console.log(myCountry)
 		if (myCountry == continentSelect.value || continentSelect.value === "all") {
 			country.closest(".allCountries").classList.remove("hide-card")
 		} else {
@@ -180,17 +169,17 @@ continentSelect.onchange = (evt) => {
 
 const modalTemplate = (element) => {
 	const { currencies, languages, borders, flags, name, population, region, capital, subregion, startOfWeek } = element
-	
-	const currencyObj = Object.keys(currencies)	
-	const currenceList = currencyObj.map(cur => currencies[cur].name)	
+
+	const currencyObj = Object.keys(currencies)
+	const currenceList = currencyObj.map(cur => currencies[cur].name)
 	const langs = Object.values(languages)
 	const borderState = typeof borders !== "undefined"
 	modalWrapper.classList.add("modal-container")
-	
+
 	modalWrapper.innerHTML = `					
         
 		<div class="country-details">		
-			<img class="country-details-img" src= ${flags.svg} alt="" tabindex=0>
+			<img class="country-details-img" src= ${flags.svg} alt="the flag of ${name.common} " tabindex=0>
 			<div class="primary-secondary">
 				<div class="primary">           
            			 <h3 class="primary-title">${name.common}</h3>
@@ -219,18 +208,23 @@ const modalTemplate = (element) => {
 						<span class="highLight">Start of Week:</span> ${startOfWeek}
 					</p>
 
-					<p class="secondary-message">
-						<span class="highLight">Currencies:</span>	
-						${currenceList.map(cur => `<span class="secondary-currency">${cur}</span>`)}							
-					</p>
+					<div class="secondary-message">
+						<span class="highLight">Currencies:</span>
+						<ul class="currency-list>	
+							${currenceList.map(cur => `<li class="currency-list-item">
+								<span class="secondary-currency">${cur}</span>
+							</li>`)}
+						</ul>							
+					</div>
 
 					<p class="secondary-message">
 					   <span class="highLight">Languages:</span> 
-					   <div class="languages">
-						${langs.map(lang => `
-						   <span class="secondary-language">${lang}</span>
-						`)}
-						</div
+					   <ul class="languages">
+						${langs.map(lang => `<li>
+						   		<span class="secondary-language">${lang}</span>
+						   </li>
+						`).join(" ")}
+						</ul>
 					</p>
 		 		 </div>
   
@@ -238,55 +232,42 @@ const modalTemplate = (element) => {
 		  			<p class="bordering-content">
 					  <span class="highLight">Border countries:</span>
 					</p>
-		  			<div class="bordering">					 
+		  			<ul class="bordering">					 
 					  ${borderState ?
-			borderArray.map(border => `<button class="border btn"> ${border}</button> `).join("")
-			: `<span>no borders</span>`} 						
-		   			</div>
+			            borderArray.map(border => `<li>
+							<button class="border btn"> ${border}</button></li>`).join("")
+								: `<li><span>No bordering countries</span></li>`} 						
+		   			</ul>
 				 </div>		 
 				 
 
 			</div> 
 	</div>     
-					`
-
-	// __________________________
+	`
 	const borderingCountries = document.querySelector(".bordering");
-
-
-	//console.log(borderingCountries)
 	//add an eventListener to bordering countries
 	// when the btn of bordering country is clicked 
 	// respective country should be displayed.
 	borderingCountries.addEventListener("click", (evt) => {
 		const apiEndpoint = `https://restcountries.com/v3.1/name/${evt.target.innerHTML.trim()}`
-		console.log(evt.target.innerHTML)
-		console.log(apiEndpoint)
+
 		fetch(apiEndpoint)
 			.then(response => response.json())
 			.then(data => {
-				console.log(data)
 				//call the modalTemplate and fetched data for a particular
 				//country be applied.
 				borderArray = [];
 				data[0].borders.map(country => {
-					console.log(country)
-					codeArray.forEach((elm, index) => {
 
+					codeArray.forEach((elm, index) => {
 						if (country == elm) {
 							borderArray.push(countryArray[index]);
-							console.log(countryArray[index]);
 						}
 					})
 				});
-				//****************** */
-				console.log(data[0].borders)
 				modalTemplate(data[0])
 			})
 	})
-
-	// ________________
-
 
 }
 
