@@ -63,7 +63,8 @@ const fetchCountry = (event) => {
 			data.forEach(element => {
 
 				//const currency = element.currencies.name;
-				let country = document.createElement("button");
+				let country = document.createElement("div");
+				let imageBtn = document.createElement("button");
 				let countryDetails = document.createElement("div");
 				let img = document.createElement("img");
 
@@ -77,8 +78,11 @@ const fetchCountry = (event) => {
 				img.classList.add("flags");
 				img.alt = `${element.name.common}'s flag`;
 
-				country.appendChild(img);
+				//country.appendChild(img);
+				imageBtn.appendChild(img)
+				imageBtn.classList.add("image-btn")
 				countries.appendChild(country);
+				country.appendChild(imageBtn)
 				country.appendChild(countryDetails);
 
 				countryDetails.innerHTML = `
@@ -104,7 +108,7 @@ const fetchCountry = (event) => {
 				`
 
 				img.src = `${element.flags.svg}`;
-				country.addEventListener("click", function (evt) {
+				imageBtn.addEventListener("click", function (evt) {
 					mainWrapper.style.display = "none";
 					modal.style.display = "block";
 					borderArray = [];

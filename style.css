@@ -229,20 +229,23 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--clr-white);
-    color: var(--clr-almost-black);
-    outline: none;
-    border: none;
-    outline: none;
+    color: var(--clr-almost-black);   
     padding-inline: 0;
     padding-block-end: 1rem;
     padding-block-start: 0;
 }
+.image-btn { 
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
 
-.allCountries:hover,
-.allCountries:focus {
+.image-btn:hover,
+.image-btn:focus {
     cursor: pointer;
     outline: dashed currentColor;
-    outline-offset: 0.255em;
+    outline-offset: -0.5em;
 }
 
 .country-details-wrapper {
