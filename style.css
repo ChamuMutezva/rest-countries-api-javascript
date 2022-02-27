@@ -103,7 +103,7 @@ select {
 }
 
 :root {
-    --background-el: hsl(0, 0%, 100%);
+    --clr-white: hsl(0, 0%, 100%);
     --body: hsl(0, 0%, 98%);
     --spacer-16: 1rem;
     --spacer-30: 1.875rem;
@@ -132,8 +132,6 @@ body {
 
 .heading {
     font-size: calc(14rem / 16);
-    font-weight: 600;
-    color: var(--clr-almost-black);
     font-weight: 800;
 }
 
@@ -149,16 +147,16 @@ path {
 }
 
 .highLight {
-    font-weight: 900;
-    font-size: 1rem;
+    font-weight: 600;
 }
 
-.countryDetails {
-    font-weight: 100;   
+.country-details {
+    font-weight: 100;
 }
 
-.header {    
-    color: var(--clr-almost-black);     
+.header {
+    background-color: var(--clr-white);
+    color: var(--clr-almost-black);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
@@ -171,74 +169,92 @@ path {
 .toggle-state-btn {
     background-color: inherit;
     border: none;
+    flex: 1 1 40%;
+    text-align: end;
+    display: flex;
+    place-content: flex-end;
+    align-items: center;
+    gap: .5rem;
 }
 
 svg.svg-inline--fa.fa-moon.fa-w-16 {
-    height: 17px;
-    width: 5vw;
+    max-height: 1.25rem;
+    max-width: 1.25rem;
     font-size: small;
     transform: rotate(-35deg);
 }
 
-img {
-    max-width: 100%;
+.country-details-content {
+    margin-top: 1rem;
+}
+
+.flags {
     min-height: 160px;
-    margin: auto;
-    display: block;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 
-div .paraName {
-    padding-left: 8%;
-    /*  color: white; */
-    padding-bottom: 5%;
+.paraName {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
 }
 
-.paraName h2 {
-    margin-top: 5%;
+.country-details-title {
+    margin-top: 1rem;
+    font-weight: 800;
+    font-size: 1.125rem;
+    line-height: 1.4;
 }
 
-h5 {
-    font-weight: 300;
-    margin-top: 5%;
+.country-population,
+.country-region,
+.country-capital {
+    font-size: calc(14rem / 16);
+    margin-bottom: .25rem;
 }
 
-figure {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+.country-details-data-titles {
+    font-weight: 600;
+}
+
+.primary-secondary {
+    margin-top: 2rem;
+}
+
+.mainWrapper {
+    padding-bottom: 4rem;
 }
 
 .countries {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    padding-bottom: 2rem;
-}
-
-
-
-.mainWrapper {
-    font-size: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    place-items: center;
+    gap: 1.5rem;
+    padding-top: 2rem;
 }
 
 .allCountries {
-    width: 286px;
-    /* max-height: 280px;*/
-    margin-top: 27px;
+    max-width: 16.5rem;
     box-shadow: 0 1px 6px 20px rgba(0, 0, 0, 0.06), 0 1px 2px 4px rgba(0, 0, 0, 0.12);
-    /*
-    --background-el: hsl(209, 23%, 22%);
-    background-color: var(--background-el);
-   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);*/
+    overflow: hidden;
     border-radius: 10px;
-    margin-bottom: 3%;
+    background-color: var(--clr-white);
+    color: var(--clr-almost-black);
+    outline: none;
+    border: none;
+    outline: none;
+    padding-inline: 0;
+    padding-block-end: 1rem;
+    padding-block-start: 0;
 }
 
-.allCountries:hover {
+.allCountries:hover,
+.allCountries:focus {
     cursor: pointer;
+    outline: dashed currentColor;
+    outline-offset: 0.255em;
+}
+
+.country-details-wrapper {
+    text-align: left;
 }
 
 .hide-card {
@@ -259,13 +275,12 @@ figure {
     width: 80%;
 }
 
-select.continents {
-   
-    background-color: var(--background-el);
-   /* margin: 5% 0 5% 7%;
-    width: 45%;*/
+.continents {
+    background-color: var(--clr-white);
+    width: 60%;
     padding: 1rem;
     border-radius: 5px;
+    border: none;
 }
 
 select.continents.darkMode {
@@ -276,79 +291,90 @@ input[type="search"].darkMode {
     color: hsl(0, 0%, 100%);
 }
 
-label.searchCountry {
+.searchCountry {
     position: relative;
 }
 
 .fa-search {
     position: absolute;
-    top: 25px;
+    top: 20%;
     left: 37px;
     color: hsl(0, 0%, 52%);
+    z-index: 100;
 }
 
 input[type="search"] {
     position: relative;
     width: 100%;
-    padding: 24px 50px;
-    padding-left: 15%;
-    display: block;
+    padding: 1rem;
+    padding-left: 20%;
     border: none;
     border-radius: 4px;
-    margin: 5% auto;
-    background-color: var(--background-el);
-    /*--background-el: hsl(209, 23%, 22%);  */
+    margin: 2rem auto;
+    background-color: var(--clr-white);
+    /*--clr-white: hsl(209, 23%, 22%);  */
     color: hsl(200, 15%, 8%);
 }
-
-input[type="search"]:before {
-    position: absolute;
-    font-family: 'FontAwesome';
-    top: 0;
-    left: 10px;
-    content: "\f005";
-}
-
 
 /* MODAL section */
 .modal {
     position: absolute;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     top: 0;
+    left: 0;
     display: none;
-    font-size: 16px;
+    padding-inline: 1.75rem;
+    padding-block: var(--spacer-30);
 }
 
-.modal img {
-    width: 80%;
+.modal-container {
+    padding-block: calc(var(--spacer-16) * 3.5);
 }
 
-input#backBtn {
-    width: 150px;
-    margin: 5% 0 10% 10%;
+.country-details-img {
+    object-fit: cover;
+    min-height: 14.3125rem;
+    border-radius: 6px;
+    margin: auto;
 }
 
-input#backBtn,
+.back-btn {
+    min-width: 9.375rem;
+}
+
+.back-btn,
 .border {
-    --background-el: hsl(209, 23%, 22%);
-    padding: 10px;
+    background-color: var(--clr-white);
+    padding: .5rem 1.5rem;
     border: none;
+    box-shadow: 1px 1px 8px 3px var(--clr-almost-black);
 }
 
 .border {
     margin: 5px auto;
-    width: 31%;
 }
 
-.modal h3 {
-    margin: 34px 0 34px 34px;
-    font-size: 2rem;
+.primary-title {
+    font-size: calc(22rem / 16);
+    font-weight: 800;
+}
+
+.primary-divider {
+    margin-top: var(--spacer-16);
+    font-size: calc(14rem/16);
 }
 
 .secondary {
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 2.75rem;
+    margin-bottom: 2.75rem;
+    font-size: calc(14rem/16);
+}
+
+.secondary-message {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .75rem;
 }
 
 .modal h6 {
@@ -358,10 +384,11 @@ input#backBtn,
 }
 
 .bordering {
-    padding: 20px 10px;
+    padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    gap: var(--spacer-16);
 }
 
 label.backButton {
@@ -370,11 +397,19 @@ label.backButton {
 
 .fa-long-arrow-alt-left {
     position: absolute;
-    left: 70px;
+    left: 1rem;
     top: 2px;
 }
 
+.primary-message {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .75rem;
+}
 
+.languages {
+    flex-wrap: wrap;
+}
 
 /* dark modes */
 .darkHeader {
@@ -390,11 +425,14 @@ label.backButton {
 body.darkMode {
     color: hsl(0, 0%, 100%);
     --body: hsl(207, 26%, 17%);
-    --background-el: hsl(209, 23%, 22%);
-
+    --clr-white: hsl(209, 23%, 22%);
 }
 
-@media screen and (min-width: 616px) {
+.theme-light {
+    color: hsl(0, 0%, 100%);
+}
+
+@media screen and (min-width: 38.5rem) {
     .searchAndSelect {
         display: flex;
         flex-wrap: wrap;
@@ -407,47 +445,47 @@ body.darkMode {
         padding-top: 4%;
     }
 
+    .bordering-city {
+        grid-column: 1/3;
+    }
+
+    .fa-search {
+        top: 50%;
+        left: 1rem;
+    }
+
     .continents {
-        width: 22%;       
+        width: 30%;
     }
 
 
-    main {
-        top: 6vh;
+    .main {
+        top: 1rem;
     }
 
     /* modal */
-    .modal .countryDetails {
-        display: flex;
-    }
 
-    .modal img {
-        width: 35%;
-        margin: auto 5%;
-    }
-
-    input#backBtn {
-        margin: 5px 0 5px 25px;
-    }
-
-    .primarySecondary {
+    .primary-secondary {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         /* font-size: 1.5em; */
     }
 
-    .borderingCity {
-        padding-top: 6%;
-        grid-column: 1/3;
+}
+
+@media screen and (min-width: 49.375rem) {
+    .primary-secondary {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
-    figure {
-        justify-items: end;
+    .bordering-city {
+        padding-top: 3rem;
+        grid-column: 3/3;
     }
 }
 
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 67.5rem) {
     input#backBtn {
         margin: 40px 0 5px 46px;
     }
@@ -455,16 +493,12 @@ body.darkMode {
     .nav {
         padding-inline: 5rem;
         margin: auto;
+        padding-block: 1.4375rem;
     }
 
     .heading {
         justify-self: flex-start;
-        font-size: 1.65rem;
-    }
-
-    .toggle-state-btn {
-        justify-self: flex-end;       
-        gap: 0;
+        font-size: 1.5rem;
     }
 
     .main {
@@ -473,28 +507,20 @@ body.darkMode {
     }
 
     select.continents {
-     /*   width: 210px;
-        margin-right: 77px;
-        margin-bottom: 20px;
-        */
         font-size: 1rem;
         padding-block: 1.2rem;
         padding-left: 20px;
     }
 
     input[type="search"] {
-        padding: 20px 80px;
-      /*  width: 520px;
-       
-        margin-top: 5px;
-        */
-        margin-left: 10px;
         font-size: 1rem;
+        padding: 1.25rem 4rem;
+        min-width: 25rem;
     }
 
     .fa-search {
-        top: 26px;
-        left: 47px;
+        top: 45%;
+        left: 2rem;
         font-size: 1.2rem;
     }
 
@@ -502,10 +528,13 @@ body.darkMode {
         left: 60px;
     }
 
-    .primarySecondary {
-        width: 50%;
-        margin-top: 100px;
-        padding-left: 81px;
+    .countries {
+        padding-top: 0rem;
+    }
+
+    .country-details {
+        display: flex;
+        gap: var(--spacer-30);
     }
 
     .modal img {
@@ -514,8 +543,43 @@ body.darkMode {
         height: 432px;
     }
 
-    .borderingCity {
-        padding-top: 51px;
+    .primary-secondary {
+        grid-template-columns: 1fr 1fr;
+        width: 50%;
+        margin-top: 100px;
+    }
 
+    .primary-secondary {
+        flex: 1 1 50%;
+        gap: 1rem;
+    }
+
+    .bordering-city {
+        padding-top: 0;
+        grid-column: 1/3;
+    }
+
+    .country-details-img {
+        flex: 1 1 50%;
+        width: 50%;
+    }
+
+    .secondary {
+        grid-column: 1;
+    }
+
+    .modal {
+        padding-block: 1.5rem;
+    }
+
+    .modal-container {
+        padding-block: 0;
+    }
+
+}
+
+@media screen and (min-width: 82.5rem) {
+    .secondary {
+        grid-column: 2;
     }
 }
