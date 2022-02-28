@@ -315,7 +315,7 @@ input[type="search"] {
     margin-inline: auto;
     top: 0;
     left: 0;
-    display: none;
+  /*  display: none; */
     padding-inline: 1.75rem;
     padding-block: var(--spacer-30);
 }
@@ -403,8 +403,8 @@ label.backButton {
     display: none;
 }
 
-.show-modal {
-    display: block;
+.hide-modal {
+    display: none;
 }
 
 

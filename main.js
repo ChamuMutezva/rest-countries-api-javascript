@@ -32,16 +32,14 @@ toggleImg.addEventListener("click", () => {
 
 	nav.classList.toggle("darkMode")
 	header.classList.toggle("darkHeader")
+
 	body.classList.toggle("darkMode");
 	modal.classList.toggle("darkMode");
 	continents.classList.toggle("darkMode");
 	searchCountry.classList.toggle("darkMode");
 	countryBtns.forEach(btn => btn.classList.toggle("theme-light"));
 	borderBtns.forEach(btn => btn.classList.toggle("theme-light"));
-	
 	backBtn.classList.toggle("darkButton");
-
-
 })
 
 const fetchCountry = (event) => {
@@ -103,9 +101,9 @@ const fetchCountry = (event) => {
 				img.src = `${element.flags.svg}`;
 				imageBtn.addEventListener("click", function (evt) {
 					//mainWrapper.style.display = "none";
-					modal.classList.add("show-modal")
-					 mainWrapper.classList.add("hide-main-wrapper")
-					 modal.style.display = "block";
+					modal.classList.remove("hide-modal")
+					mainWrapper.classList.add("hide-main-wrapper")
+					// modal.style.display = "block";
 					borderArray = [];
 					if (typeof element.borders != "undefined") {
 						element.borders.map(country => {
@@ -130,11 +128,11 @@ const fetchCountry = (event) => {
 backBtn.addEventListener("click", () => {
 	mainWrapper.classList.remove("hide-main-wrapper")
 	// mainWrapper.style.display = "block";
-	if (modal.children.length > 1) {
-		modal.lastElementChild.remove()
-	}
-	 modal.classList.remove("show-modal")
-	 modal.style.display = "none";
+	/*	if (modal.children.length > 1) {
+			modal.lastElementChild.remove()
+		}*/
+	// modal.classList.remove("show-modal")
+	modal.classList.add("hide-modal");
 })
 
 fetchCountry();
@@ -176,6 +174,10 @@ const modalTemplate = (element) => {
 	const langs = Object.values(languages)
 	const borderState = typeof borders !== "undefined"
 	modalWrapper.classList.add("modal-container")
+
+	//const borderBtns = Array.from(document.querySelectorAll(".border"))
+	const borderBool = modal.classList.contains("darkMode")
+	console.log(borderBool)
 
 	modalWrapper.innerHTML = `					
         
@@ -236,7 +238,7 @@ const modalTemplate = (element) => {
 		  			<ul class="bordering">					 
 					  ${borderState ?
 			borderArray.map(border => `<li>
-							<button class="border btn"> ${border}</button></li>`).join("")
+										<button class="border btn ${borderBool ? "theme-light" : ""}"> ${border}</button></li>`).join("")
 			: `<li><span>No bordering countries</span></li>`} 						
 		   			</ul>
 				 </div>		 
