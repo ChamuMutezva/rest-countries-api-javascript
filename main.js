@@ -1,4 +1,3 @@
-const countries = document.querySelector(".countries");
 const mainWrapper = document.querySelector(".mainWrapper");
 const filterContinent = Array.from(document.querySelectorAll("option"));
 const modal = document.querySelector(".modal");
@@ -14,7 +13,7 @@ let borderArray = []; // an array to hold countries bordering a country
 
 const toggleImg = document.querySelector(".toggle-state-btn"); //Light and dark mode controll
 toggleImg.addEventListener("click", () => {
-	const btns = Array.from(document.querySelectorAll(".btn"));
+	// const backBtn = document.querySelector(".back-btn");
 	const toggleMsg = document.querySelector(".toggle-state-btn span");
 	const countryBtns = Array.from(document.querySelectorAll(".allCountries"));
 	//toggle the Light and dark message
@@ -29,6 +28,7 @@ toggleImg.addEventListener("click", () => {
 	const header = document.querySelector("header")
 	const nav = document.querySelector("nav");
 	const body = document.querySelector("body");
+	const borderBtns = Array.from(document.querySelectorAll(".border"))
 
 	nav.classList.toggle("darkMode")
 	header.classList.toggle("darkHeader")
@@ -36,21 +36,18 @@ toggleImg.addEventListener("click", () => {
 	modal.classList.toggle("darkMode");
 	continents.classList.toggle("darkMode");
 	searchCountry.classList.toggle("darkMode");
-	btns[0].classList.toggle("darkButton");
+	countryBtns.forEach(btn => btn.classList.toggle("theme-light"));
+	borderBtns.forEach(btn => btn.classList.toggle("theme-light"));
+	
+	backBtn.classList.toggle("darkButton");
 
-	countryBtns.forEach(btn => btn.classList.toggle("theme-light"))
-	btns.map(btn => {
-		if (btns[0].classList.contains("darkButton")) {
-			btn.classList.add("darkButton");
-		} else {
-			btn.classList.remove("darkButton");
-		}
-	});
+
 })
 
 const fetchCountry = (event) => {
 	//old api that was changed - `https://restcountries.eu/rest/v2/all `;
 	const apiEndpoint = `https://restcountries.com/v3.1/all`
+	const countries = document.querySelector(".countries");
 
 	fetch(apiEndpoint)
 		.then(response => response.json())
@@ -105,8 +102,10 @@ const fetchCountry = (event) => {
 
 				img.src = `${element.flags.svg}`;
 				imageBtn.addEventListener("click", function (evt) {
-					mainWrapper.style.display = "none";
-					modal.style.display = "block";
+					//mainWrapper.style.display = "none";
+					modal.classList.add("show-modal")
+					 mainWrapper.classList.add("hide-main-wrapper")
+					 modal.style.display = "block";
 					borderArray = [];
 					if (typeof element.borders != "undefined") {
 						element.borders.map(country => {
@@ -129,11 +128,13 @@ const fetchCountry = (event) => {
 };
 
 backBtn.addEventListener("click", () => {
-	mainWrapper.style.display = "block";
+	mainWrapper.classList.remove("hide-main-wrapper")
+	// mainWrapper.style.display = "block";
 	if (modal.children.length > 1) {
 		modal.lastElementChild.remove()
 	}
-	modal.style.display = "none";
+	 modal.classList.remove("show-modal")
+	 modal.style.display = "none";
 })
 
 fetchCountry();
@@ -234,9 +235,9 @@ const modalTemplate = (element) => {
 					</p>
 		  			<ul class="bordering">					 
 					  ${borderState ?
-			            borderArray.map(border => `<li>
+			borderArray.map(border => `<li>
 							<button class="border btn"> ${border}</button></li>`).join("")
-								: `<li><span>No bordering countries</span></li>`} 						
+			: `<li><span>No bordering countries</span></li>`} 						
 		   			</ul>
 				 </div>		 
 				 
