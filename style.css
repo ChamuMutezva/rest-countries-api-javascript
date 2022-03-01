@@ -264,7 +264,6 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
 }
 
 /* Seach and Select continents section */
-
 .continents {
     background-color: var(--clr-white);
     width: 60%;
@@ -273,7 +272,7 @@ svg.svg-inline--fa.fa-moon.fa-w-16 {
     border: none;
 }
 
-select.continents.darkMode {
+.continents.darkMode {
     color: hsl(0, 0%, 100%);
 }
 
@@ -301,8 +300,7 @@ input[type="search"] {
     border: none;
     border-radius: 4px;
     margin: 2rem auto;
-    background-color: var(--clr-white);
-    /*--clr-white: hsl(209, 23%, 22%);  */
+    background-color: var(--clr-white);    
     color: hsl(200, 15%, 8%);
 }
 
@@ -314,8 +312,7 @@ input[type="search"] {
     min-height: 100vh;
     margin-inline: auto;
     top: 0;
-    left: 0;
-  /*  display: none; */
+    left: 0; 
     padding-inline: 1.75rem;
     padding-block: var(--spacer-30);
 }
@@ -430,6 +427,11 @@ body.darkMode {
 }
 
 @media screen and (min-width: 38.5rem) {
+    .header {      
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
     .searchAndSelect {
         display: flex;
         flex-wrap: wrap;

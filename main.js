@@ -42,16 +42,18 @@ toggleImg.addEventListener("click", () => {
 	backBtn.classList.toggle("darkButton");
 })
 
-const fetchCountry = (event) => {
+const fetchCountry = async(event) => {
 	//old api that was changed - `https://restcountries.eu/rest/v2/all `;
 	const apiEndpoint = `https://restcountries.com/v3.1/all`
 	const countries = document.querySelector(".countries");
 
-	fetch(apiEndpoint)
+	await fetch(apiEndpoint)
 		.then(response => response.json())
 		.then(data => {
 			console.log(data);
 			data.forEach(element => {
+
+				const { cca3, borders, flags, name, population, region, capital } = element
 
 				//const currency = element.currencies.name;
 				let country = document.createElement("div");
@@ -60,18 +62,18 @@ const fetchCountry = (event) => {
 				let img = document.createElement("img");
 
 				//create an array to hold all alpha3Code
-				codeArray.push(element.cca3);
+				codeArray.push(cca3);
 				//create an array to hold all countries
-				countryArray.push(element.name.common);
+				countryArray.push(name.common);
 
 				country.classList.add("allCountries");
 				countryDetails.classList.add("paraName");
-				img.classList.add("flags");
-				img.alt = `${element.name.common}'s flag`;
 
-				//country.appendChild(img);
+				img.classList.add("flags");
+				img.alt = `${name.common}'s flag`;
 				imageBtn.appendChild(img)
 				imageBtn.classList.add("image-btn")
+
 				countries.appendChild(country);
 				country.appendChild(imageBtn)
 				country.appendChild(countryDetails);
@@ -79,34 +81,32 @@ const fetchCountry = (event) => {
 				countryDetails.innerHTML = `
 				<div class="country-details-wrapper">				
 				  	    <h2 class="country-details-title">
-						   ${element.name.common}
+						   ${name.common}
 						</h2>
 						<div class="country-details-content">
 				    		 <p class="country-population">
 							     <span class="country-details-data-titles">Population:</span>
-								 <span class="country-details-data-content">${element.population.toLocaleString()}</span>
+								 <span class="country-details-data-content">${population.toLocaleString()}</span>
 							</p>
 				       		 <p class="country-region">
 								<span class="country-details-data-titles">Region:</span>
-								<span class="country-details-data-content">${element.region}</span>
+								<span class="country-details-data-content">${region}</span>
 							 </p>
 				        	 <p class="country-capital">
 							 	<span class="country-details-data-titles">Capital:</span>
-							 	<span class="country-details-data-content">${element.capital}</span>
+							 	<span class="country-details-data-content">${capital}</span>
 							 </p>
 						</div>
 				</div>			  
 				`
 
-				img.src = `${element.flags.svg}`;
-				imageBtn.addEventListener("click", function (evt) {
-					//mainWrapper.style.display = "none";
+				img.src = `${flags.svg}`;
+				imageBtn.addEventListener("click", function () {					
 					modal.classList.remove("hide-modal")
-					mainWrapper.classList.add("hide-main-wrapper")
-					// modal.style.display = "block";
+					mainWrapper.classList.add("hide-main-wrapper")					
 					borderArray = [];
-					if (typeof element.borders != "undefined") {
-						element.borders.map(country => {
+					if (typeof borders != "undefined") {
+						borders.map(country => {
 							codeArray.forEach((elm, index) => {
 								if (country == elm) {
 									borderArray.push(countryArray[index]);
@@ -114,7 +114,6 @@ const fetchCountry = (event) => {
 							})
 						})
 					}
-
 					modal.appendChild(modalWrapper);
 					modalTemplate(element)
 				})
@@ -126,17 +125,11 @@ const fetchCountry = (event) => {
 };
 
 backBtn.addEventListener("click", () => {
-	mainWrapper.classList.remove("hide-main-wrapper")
-	// mainWrapper.style.display = "block";
-	/*	if (modal.children.length > 1) {
-			modal.lastElementChild.remove()
-		}*/
-	// modal.classList.remove("show-modal")
+	mainWrapper.classList.remove("hide-main-wrapper")	
 	modal.classList.add("hide-modal");
 })
 
 fetchCountry();
-
 
 searchCountry.addEventListener("input", (e) => {
 	const resultCountry = e.target.value;
@@ -175,9 +168,7 @@ const modalTemplate = (element) => {
 	const borderState = typeof borders !== "undefined"
 	modalWrapper.classList.add("modal-container")
 
-	//const borderBtns = Array.from(document.querySelectorAll(".border"))
-	const borderBool = modal.classList.contains("darkMode")
-	console.log(borderBool)
+	const borderBool = modal.classList.contains("darkMode")	
 
 	modalWrapper.innerHTML = `					
         
